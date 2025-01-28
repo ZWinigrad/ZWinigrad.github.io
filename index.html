@@ -1,14 +1,121 @@
-<!DOCTYPE HTML>
-<HTML>
-<Header>
+<!DOCTYPE html>
+<html>
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zack's Bird Bonanza</title>
+    <link href="/style.css" rel="stylesheet" type="text/css" media="all">
+
+  </head>
+  <body>
+    
+    <h1 class="heading" id="head">Welcome to HELL!</h1>
+
+    <p>
+      A friend of mine wants to learn birds, and I am going to help him! <br>
+      This page is going to show you an image of a bird, and you will have to guess what <b>familiy</b> it is from! <br>
+      For the time being, all the images are my <i>own</i>! Hooray!
+    </p>
+    
+    <button class="button"> <a class="link" href="/page2.html">Bird Cheat Sheet</a></button>
+
+    <div class="box">
+      <img class="bird" src = "/Great Blue Heron 1.jpg">
+      <p> This is a <strong> GREAT BLUE HERON </strong> and don't you forget it! </p>
+         <p> Great Blue Herons are a member of the Areidae family that includes Herons.</p> 
+    </div>
   
-</Header>
-<Body>
-  <p> I am writing this here to be visible!</p>
-</Body>
+    
+    <div class="slideshow-container">
 
+    <div class="mySlides fade">
+      <img src="/Great Blue Heron 1.jpg" style="width:100%">
+      <li class=form>What family is this bird in?
+        <ul>
+          <li><label for="Ardeidae">Ardeidae</label> <input type="radio" name="Bird" id="ardeidae" value="ardeidae"></li>
+          <li><label for="Picidae">Picidae</label> <input type="radio" name="Bird" id="picidae" value="picidae"></li>
+          <li><label for="Fringillidae">Fringillidae</label> <input type="radio" name="Bird" id="fringillidae" value="fringillidae"></li>
+          <li><label for="Bombycillidae">Bombycillidae</label> <input type="radio" name="Bird" id="bombycillidae" value="bombycillidae"></li>
+          <input type="submit" style="display: none" />
+        </ul>
+      </li>
+    </div>
 
+    <div class="mySlides fade">
+      <img src="/American Goldfinch 1.jpg" style="width:100%">
+      <li class=form>What family is this bird in?
+        <ul>
+          <li><label for="Ardeidae">Ardeidae</label> <input type="radio" name="2" id="ardeidae" value="ardeidae"></li>
+          <li><label for="Picidae">Picidae</label> <input type="radio" name="2" id="picidae" value="picidae"></li>
+          <li><label for="Fringillidae">Fringillidae</label> <input type="radio" name="2" id="fringillidae" value="fringillidae"></li>
+          <li><label for="Bombycillidae">Bombycillidae</label> <input type="radio" name="2" id="bombycillidae" value="bombycillidae"></li>
+          <input type="submit" style="display: none" />
+       </ul>
+      </li>
+    </div>
 
+   <div class="mySlides fade">
+     <img src="/Northern Flicker 3.jpg" style="width:100%">
+     <li class=form>What family is this bird in?
+        <ul>
+          <li><label for="Ardeidae">Ardeidae</label> <input type="radio" name="3" id="ardeidae" value="ardeidae"></li>
+          <li><label for="Picidae">Picidae</label> <input type="radio" name="3" id="picidae" value="picidae"></li>
+          <li><label for="Fringillidae">Fringillidae</label> <input type="radio" name="3" id="fringillidae" value="fringillidae"></li>
+          <li><label for="Bombycillidae">Bombycillidae</label> <input type="radio" name="3" id="bombycillidae" value="bombycillidae"></li>
+          <input type="submit" style="display: none" />
+       </ul>
+      </li>
+   </div>
 
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
   
-</HTML>
+  </div>
+  
+  <br>
+
+  <button type="button" class="button" onclick="myFunction()" Try it!>
+    
+  </button>
+
+    <script>
+    
+    let slideIndex = 1;
+    showSlides(slideIndex);
+
+    // Next/previous controls
+    function plusSlides(n) {
+    showSlides(slideIndex += n);
+    }
+
+    // Thumbnail image controls
+    function currentSlide(n) {
+    showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+    let i;
+    let slides = document.getElementsByClassName("mySlides");
+    let dots = document.getElementsByClassName("dot");
+    if (n > slides.length) {slideIndex = 1}
+    if (n < 1) {slideIndex = slides.length}
+    for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+    }
+    for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex-1].style.display = "block";
+    dots[slideIndex-1].className += " active";
+    }
+    </script>
+    
+    <script>
+    function myFunction(){
+      document.getElementById("head").innerHTML = "Great Blue Heron";
+    }  
+    </script>
+    
+  </body>
+</html>
