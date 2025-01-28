@@ -37,7 +37,7 @@
           <li><label for="Picidae">Picidae</label> <input type="radio" name="Bird" id="picidae" value="picidae"></li>
           <li><label for="Fringillidae">Fringillidae</label> <input type="radio" name="Bird" id="fringillidae" value="fringillidae"></li>
           <li><label for="Bombycillidae">Bombycillidae</label> <input type="radio" name="Bird" id="bombycillidae" value="bombycillidae"></li>
-          <input type="submit" style="display: none" />
+          <input type="submit">
         </ul>
       </li>
     </div>
@@ -46,11 +46,11 @@
       <img src="/American Goldfinch 1.jpg" style="width:100%">
       <li class=form>What family is this bird in?
         <ul>
-          <li onselect=Wrong2Reveal()><label for="Ardeidae">Ardeidae</label> <input type="radio" name="2" id="ard" value="ardeidae"></li>
-          <li onselect=Wrong2Reveal()><label for="Picidae">Picidae</label> <input type="radio" name="2" id="pic" value="picidae"></li>
-          <li onselect=Right2Reveal()><label for="Fringillidae">Fringillidae</label> <input type="radio" name="2" id="fri" value="fringillidae"></li>
-          <li onselect=Wrong2Reveal()><label for="Bombycillidae">Bombycillidae</label> <input type="radio" name="2" id="bom" value="bombycillidae"></li>
-          <input type="submit">
+          <li><label for="Ardeidae">Ardeidae</label> <input type="radio" name="2" id="ard" value="wrong"></li>
+          <li><label for="Picidae">Picidae</label> <input type="radio" name="2" id="pic" value="wrong"></li>
+          <li><label for="Fringillidae">Fringillidae</label> <input type="radio" name="2" id="fri" value="correct"></li>
+          <li><label for="Bombycillidae">Bombycillidae</label> <input type="radio" name="2" id="bom" value="wrong"></li>
+          <input type="submit" onclick=Reveal2()>
        </ul>
       </li>
       <p hidden id="wrong2">
@@ -69,7 +69,7 @@
           <li><label for="Picidae">Picidae</label> <input type="radio" name="3" id="picidae" value="picidae"></li>
           <li><label for="Fringillidae">Fringillidae</label> <input type="radio" name="3" id="fringillidae" value="fringillidae"></li>
           <li><label for="Bombycillidae">Bombycillidae</label> <input type="radio" name="3" id="bombycillidae" value="bombycillidae"></li>
-          <input type="submit" style="display: none" />
+          <input type="submit">
        </ul>
       </li>
    </div>
@@ -118,22 +118,14 @@
     </script>
     
     <script>
-    function Wrong2Reveal() {
-      var x = document.getElementById("wrong2");
-      if (x.style.display === "none") {
-        x.style.display = "block";
+    function Reveal2() {
+       var x = document.getElementById("wrong2")
+       var y = document.getElementById("right2");
+      if (selectedValue === "correct") {
+         x.style.display = "block";
       } else {
-      x.style.display = "none";
+        y.style.display = "block";
         }
-      }
-    function Right2Reveal() {
-      var x = document.getElementById("wrong2");
-      if (x.style.display === "none") {
-        x.style.display = "block";
-      } else {
-      x.style.display = "none";
-        }
-      }
     </script>
     
   </body>
