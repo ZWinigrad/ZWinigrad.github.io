@@ -53,7 +53,7 @@
           <input type="submit" style="display: none" />
        </ul>
       </li>
-      <p hidden id="wrong2">
+      <p id="wrong2">
         You <b>FOOL!</b> I cannot belive that you got this one wrong, what is wrong with you??????????
       </p>
     </div>
@@ -115,9 +115,14 @@
     </script>
     
     <script>
-    function myFunction(){
-      document.getElementById("wrong2").style.display = "none";
-    }  
+    function myFunction() {
+      var x = document.getElementById("wrong2");
+      if (x.style.display === "none") {
+        x.style.display = "block";
+      } else {
+      x.style.display = "none";
+        }
+      }
     </script>
     
   </body>
