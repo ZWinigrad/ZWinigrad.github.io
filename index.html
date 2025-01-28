@@ -46,15 +46,18 @@
       <img src="/American Goldfinch 1.jpg" style="width:100%">
       <li class=form>What family is this bird in?
         <ul>
-          <li onclick=Wrong2Reveal()><label for="Ardeidae">Ardeidae</label> <input type="radio" name="2" id="ard" value="ardeidae"></li>
-          <li onclick=Wrong2Reveal()><label for="Picidae">Picidae</label> <input type="radio" name="2" id="pic" value="picidae"></li>
-          <li><label for="Fringillidae">Fringillidae</label> <input type="radio" name="2" id="fri" value="fringillidae"></li>
-          <li onclick=Wrong2Reveal()><label for="Bombycillidae">Bombycillidae</label> <input type="radio" name="2" id="bom" value="bombycillidae"></li>
+          <li onselect=Wrong2Reveal()><label for="Ardeidae">Ardeidae</label> <input type="radio" name="2" id="ard" value="ardeidae"></li>
+          <li onselect=Wrong2Reveal()><label for="Picidae">Picidae</label> <input type="radio" name="2" id="pic" value="picidae"></li>
+          <li onselect=Right2Reveal()><label for="Fringillidae">Fringillidae</label> <input type="radio" name="2" id="fri" value="fringillidae"></li>
+          <li onselect=Wrong2Reveal()><label for="Bombycillidae">Bombycillidae</label> <input type="radio" name="2" id="bom" value="bombycillidae"></li>
           <input type="submit" style="display: none" />
        </ul>
       </li>
       <p hidden id="wrong2">
         You <b>FOOL!</b> I cannot belive that you got this one wrong, what is wrong with you??????????
+      </p>
+      <p hidden id="right2">
+        You are correct! Good job 👍 
       </p>
     </div>
 
@@ -116,6 +119,14 @@
     
     <script>
     function Wrong2Reveal() {
+      var x = document.getElementById("wrong2");
+      if (x.style.display === "none") {
+        x.style.display = "block";
+      } else {
+      x.style.display = "none";
+        }
+      }
+    function Right2Reveal() {
       var x = document.getElementById("wrong2");
       if (x.style.display === "none") {
         x.style.display = "block";
