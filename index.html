@@ -46,10 +46,10 @@
       <img src="/American Goldfinch 1.jpg" style="width:100%">
       <li class=form>What family is this bird in?
         <ul>
-          <li><label for="Ardeidae">Ardeidae</label> <input type="radio" name="2" id="ard" value="ardeidae"></li>
-          <li><label for="Picidae">Picidae</label> <input type="radio" name="2" id="pic" value="picidae"></li>
+          <li onclick=Wrong2Reveal()><label for="Ardeidae">Ardeidae</label> <input type="radio" name="2" id="ard" value="ardeidae"></li>
+          <li onclick=Wrong2Reveal()><label for="Picidae">Picidae</label> <input type="radio" name="2" id="pic" value="picidae"></li>
           <li><label for="Fringillidae">Fringillidae</label> <input type="radio" name="2" id="fri" value="fringillidae"></li>
-          <li><label for="Bombycillidae">Bombycillidae</label> <input type="radio" name="2" id="bom" value="bombycillidae"></li>
+          <li onclick=Wrong2Reveal()><label for="Bombycillidae">Bombycillidae</label> <input type="radio" name="2" id="bom" value="bombycillidae"></li>
           <input type="submit" style="display: none" />
        </ul>
       </li>
@@ -115,7 +115,7 @@
     </script>
     
     <script>
-    function myFunction() {
+    function Wrong2Reveal() {
       var x = document.getElementById("wrong2");
       if (x.style.display === "none") {
         x.style.display = "block";
