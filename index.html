@@ -46,13 +46,16 @@
       <img src="/American Goldfinch 1.jpg" style="width:100%">
       <li class=form>What family is this bird in?
         <ul>
-          <li><label for="Ardeidae">Ardeidae</label> <input type="radio" name="2" id="ardeidae" value="ardeidae"></li>
-          <li><label for="Picidae">Picidae</label> <input type="radio" name="2" id="picidae" value="picidae"></li>
-          <li><label for="Fringillidae">Fringillidae</label> <input type="radio" name="2" id="fringillidae" value="fringillidae"></li>
-          <li><label for="Bombycillidae">Bombycillidae</label> <input type="radio" name="2" id="bombycillidae" value="bombycillidae"></li>
+          <li><label for="Ardeidae">Ardeidae</label> <input type="radio" name="2" id="ard" value="ardeidae"></li>
+          <li><label for="Picidae">Picidae</label> <input type="radio" name="2" id="pic" value="picidae"></li>
+          <li><label for="Fringillidae">Fringillidae</label> <input type="radio" name="2" id="fri" value="fringillidae"></li>
+          <li><label for="Bombycillidae">Bombycillidae</label> <input type="radio" name="2" id="bom" value="bombycillidae"></li>
           <input type="submit" style="display: none" />
        </ul>
       </li>
+      <p display:none>
+        You <b>FOOL!</b> I cannot belive that you got this one wrong, what is wrong with you??????????
+      </p>
     </div>
 
    <div class="mySlides fade">
@@ -75,8 +78,8 @@
   
   <br>
 
-  <button type="button" class="button" onclick="myFunction()" Try it!>
-    
+  <button type="button" class="button" onclick="myFunction()"> 
+    Sumbit!
   </button>
 
     <script>
@@ -113,7 +116,7 @@
     
     <script>
     function myFunction(){
-      document.getElementById("head").innerHTML = "Great Blue Heron";
+      document.getElementById("ard").innerHTML = "Great Blue Heron";
     }  
     </script>
     
