@@ -119,7 +119,8 @@
     
     <script>
     function Reveal2() {
-       var x = document.getElementById("wrong2")
+      const selectedRadioButton = document.querySelector('input[name="2"]:checked'); 
+      var x = document.getElementById("wrong2")
        var y = document.getElementById("right2");
       if (selectedValue === "correct") {
          x.style.display = "block";
