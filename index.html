@@ -16,21 +16,17 @@
   </head>
   <body>
 
-    <script>
-    var line = turf.lineString([
-      [-74, 40],
-      [-78, 42],
-      [-82, 35],
-      ]);
-    var bbox = turf.bbox(line);
-    var bboxPolygon = turf.bboxPolygon(bbox);
-    </script>
+    <div id="map" style="width: 600px; height: 400px;">
+    </div>
 
-    <div id="map" style=height: 180px;></div>
+   
 
     <script>
       var map = L.map('map').setView([51.505, -0.09], 13);
-
+       L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
     </script>
     
     
