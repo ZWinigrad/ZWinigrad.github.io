@@ -1,5 +1,6 @@
 //js baby!!
 
+
 // Initialize the map centered somewhere near Montpelier, Vermont
   var map = L.map('map').setView([44.2601, -72.5754], 13);
 
