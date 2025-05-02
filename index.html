@@ -33,9 +33,9 @@
       // Add the GeoJSON to the map
       var geojsonLayer = L.geoJSON(data, {
         style: {
-          color: "green",
+          color: "black",
           weight: 2,
-          fillOpacity: 0.3
+          fillOpacity: 0
         },
         onEachFeature: function (feature, layer) {
           if (feature.properties && feature.properties.name) {
