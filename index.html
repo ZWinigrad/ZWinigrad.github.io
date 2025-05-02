@@ -5,50 +5,13 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-  <style>
-    #map {
-      height: 600px;
-    }
-  </style>
 </head>
 <body>
 
-<h3>Montpelier Border Map</h3>
-<div id="map"></div>
+  <h1>Hello world!</h1>
 
-<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-<script>
-  // Initialize the map centered somewhere near Montpelier, Vermont
-  var map = L.map('map').setView([44.2601, -72.5754], 13);
-
-  // Add OpenStreetMap tile layer
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; OpenStreetMap contributors'
-  }).addTo(map);
-
-  // Load the GeoJSON file (must be served from a web server)
-  fetch('data/Jurisdiction_Borders.geojson')
-    .then(response => response.json())
-    .then(data => {
-      // Add the GeoJSON to the map
-      var geojsonLayer = L.geoJSON(data, {
-        style: {
-          color: "black",
-          weight: 2,
-          fillOpacity: 0
-        },
-        onEachFeature: function (feature, layer) {
-          if (feature.properties && feature.properties.name) {
-            layer.bindPopup("Name: " + feature.properties.name);
-          }
-        }
-      }).addTo(map);
-
-      // Fit map to the bounds of the GeoJSON layer
-      map.fitBounds(geojsonLayer.getBounds());
-    })
-    .catch(error => console.error('Error loading GeoJSON:', error));
-</script>
-
+  <h3>I am going to code something wild :)</h3>
+  
+  <script src="/index.js" type="text/javascript" charset="utf-8"></script>
 </body>
 </html>
