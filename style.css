@@ -1,114 +1,13 @@
+#map {
+      height: 600px;
+    }
 
-.heading {
-  color: red;
-  text-align: center;
-  font-family: cursive; 
-}
-
-body {
-  background-color: white;
-  color: black;
-  font-family: Verdana;
-}
-
-.box {
-  background-color: #a9ec8d;
-  font-family: Courier;
-  text-align: center;
-  display: block;
-}
-
-.bird {
-  text-align: center;
-  width: 50%;
-  height: 50%; 
-  border-radius: 50%;
-  border: dotted;
-  border-color: black;
-}
-
-.space {
-  background-image: url("Great Blue Heron 1.jpg");
-  color: blue;
-  text-align: center;
-  width: 50%;
-}
-
-.button {
-  width: 150px;
-  height: 50px;
-  background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Webb%27s_First_Deep_Field.jpg/800px-Webb%27s_First_Deep_Field.jpg");
-  background-size: contain;
-  text-align: center;
-  border-radius: 10px;
-}
-
-.link:link {
- color: white; 
-}
-
-.link:visited {
-  color: hotpink;
-}
-
-.link:hover {
-  color: white;
-}
-
-.link:active {
-  color: green;
-}
-
-.table {
- border: 1px solid black; 
- border-collapse: collapse;
-}
-
-.slideshow-container {
-  max-width: 1000px;
-  position: relative;
-  margin: auto;
-}
-
-.mySlides {
-  display: none;
-}
-
-.prev, .next {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  width: auto;
-  margin-top: -22px;
-  padding: 16px;
-  color: white;
+.leaflet-tooltip.polygon-label {
+  background-color: transparent;
+  border: none;
+  color: darkblue;
   font-weight: bold;
-  font-size: 18px;
-  transition: 0.6s ease;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
+  text-align: center;
+  pointer-events: none;
+  transition: font-size 0.1s ease;
 }
-
-.next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
-}
-
-.prev:hover, .next:hover {
-  background-color: rgba(0,0,0,0.8);
-}
-
-.form {
- background-color: cyan;
- width: 100%;
-}
-
-.popup-description{
-  display: none;
-}
-
-[type="radio"]:checked ~ label ~ .popup-description{
-  display: block;
-}
-
-
