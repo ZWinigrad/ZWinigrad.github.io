@@ -1,216 +1,54 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zack's Bird Bonanza</title>
-    <link href="/style.css" rel="stylesheet" type="text/css" media="all">
-    <script src="https://cdn.jsdelivr.net/npm/@turf/turf@7/turf.min.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-     crossorigin=""/>
-  </head>
-  <body>
-
-    <div id="map" style="width: 600px; height: 400px;"></div>
-
-     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-     crossorigin=""></script>
-
-    <script>
-      const map = L.map('map'){
-        center: [-29.50, 145],
-        zoom: 3.5
-        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-        }).addTo(map);
-
-      var geojsonLayer = new L.GeoJSON.AJAX("MontpelierBorder.geojson");       
-        geojsonLayer.addTo(map);
-    </script>
-
-    <h3>My Leaflet Map</h3>
-    <div id="map"></div>
-
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-    <script>
-    // Initialize the map and set its view to a chosen geographical point and zoom level
-    var map = L.map('map').setView([51.505, -0.09], 13); // Coordinates: London
-
-    // Add OpenStreetMap tile layer
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; OpenStreetMap contributors'
-    }).addTo(map);
-
-    // Add a marker with a popup
-    L.marker([51.505, -0.09])
-      .addTo(map)
-      .bindPopup('Hello from London!')
-      .openPopup();
-    </script>
-
-    
-    <h1 class="heading" id="head">Welcome to HELL!</h1>
-
-    <p>
-      A friend of mine wants to learn birds, and I am going to help him! <br>
-      This page is going to show you an image of a bird, and you will have to guess what <b>familiy</b> it is from! <br>
-      For the time being, all the images are my <i>own</i>! Hooray!
-    </p>
-    
-    <button class="button"> <a class="link" href="/page2.html">Bird Cheat Sheet</a></button>
-
-    <div class="box">
-      <img class="bird" src = "/Great Blue Heron 1.jpg">
-      <p> This is a <strong> GREAT BLUE HERON </strong> and don't you forget it! </p>
-         <p> Great Blue Herons are a member of the Areidae family that includes Herons.</p> 
-    </div>
-  
-    
-    <div class="slideshow-container">
-
-    <div class="mySlides fade">
-      <img src="/Great Blue Heron 1.jpg" style="width:100%">
-      <form class=box>
-      <li> What family is this bird in?
-        <ul>
-          <li>
-            <label for="ardeidae">Ardeidae</label> 
-            <input type="radio" name="Bird" id="ardeidae" value="ardeidae"></li>
-            <p class="popup-description">
-              You are correct! Good job 
-            </p>
-          <li>
-            <label for="picidae">Picidae</label> 
-            <input type="radio" name="Bird" id="picidae" value="picidae"></li>
-            <p class="popup-description">
-              You <b>FOOL!</b> I cannot belive that you got this one wrong, what is wrong with you??????????
-            </p>
-          <li>
-            <label for="fringillidae">Fringillidae</label> 
-            <input type="radio" name="Bird" id="fringillidae" value="fringillidae"></li>
-            <p class="popup-description">
-              You <b>FOOL!</b> I cannot belive that you got this one wrong, what is wrong with you??????????
-            </p>
-          <li>
-            <label for="bombycillidae">Bombycillidae</label> 
-            <input type="radio" name="Bird" id="bombycillidae" value="bombycillidae"></li>
-            <p class="popup-description">
-              You <b>FOOL!</b> I cannot belive that you got this one wrong, what is wrong with you??????????
-            </p>
-        </ul>
-      </li>
-      </form>
-    </div>
-
-
-    <div class="mySlides fade">
-      <img src="/American Goldfinch 1.jpg" style="width:100%">
-      <form class=box>
-      What family is this bird in?
-        <div>
-              <input type="radio" name="2" id="ard" value="wrong"></li>
-              <label for="ard">Ardeidae</label> 
-              <p class="popup-description">
-              You <b>FOOL!</b> I cannot belive that you got this one wrong, what is wrong with you??????????
-              </p>
-        </div>
-        <div> 
-            <input type="radio" name="2" id="pic" value="wrong"></li>
-            <label for="pic">Picidae</label>
-            <p class="popup-description">
-              You <b>FOOL!</b> I cannot belive that you got this one wrong, what is wrong with you??????????
-            </p>
-        </div>
-        <div> 
-            <input type="radio" name="2" id="fri" value="correct"></li>
-            <label for="fri">Fringillidae</label>
-            <p class="popup-description">
-              You are correct! Good job 
-            </p>
-        </div>
-        <div>
-            <input type="radio" name="2" id="bom" value="wrong"></li>
-            <label for="bom">Bombycillidae</label> 
-            <p class="popup-description">
-              You <b>FOOL!</b> I cannot belive that you got this one wrong, what is wrong with you??????????
-            </p>
-        </div>
-      </form>
-    </div>
-
-   <div class="mySlides fade">
-     <img src="/Northern Flicker 3.jpg" style="width:100%">    
-     <form class=form>
-     <li> What family is this bird in?
-        <ul>
-          <li>
-            <label for="Ardeidae">Ardeidae</label>
-            <input type="radio" name="3" id="ardeidae" value="ardeidae"></li>
-            <p class="popup-description">
-              You <b>FOOL!</b> I cannot belive that you got this one wrong, what is wrong with you??????????
-            </p>
-          <li>
-            <label for="Picidae">Picidae</label> 
-            <input type="radio" name="3" id="picidae" value="picidae"></li>
-            <p class="popup-description">
-              You are correct! Good job 
-            </p>
-          <li>
-            <label for="Fringillidae">Fringillidae</label> 
-            <input type="radio" name="3" id="fringillidae" value="fringillidae"></li>
-            <p class="popup-description">
-              You <b>FOOL!</b> I cannot belive that you got this one wrong, what is wrong with you??????????
-            </p>
-          <li>
-            <label for="Bombycillidae">Bombycillidae</label> 
-            <input type="radio" name="3" id="bombycillidae" value="bombycillidae"></li>
-            <p class="popup-description">
-              You <b>FOOL!</b> I cannot belive that you got this one wrong, what is wrong with you??????????
-            </p>
-       </ul>
-      </li>
-     </form>
-   </div>
-      
-    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-    <a class="next" onclick="plusSlides(1)">&#10095;</a>
-  
-  </div>
-  
-  <br>
-
-    <script>
-    
-    let slideIndex = 1;
-    showSlides(slideIndex);
-
-    // Next/previous controls
-    function plusSlides(n) {
-    showSlides(slideIndex += n);
+<head>
+  <title>Leaflet Map with External GeoJSON</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <style>
+    #map {
+      height: 600px;
     }
+  </style>
+</head>
+<body>
 
-    // Thumbnail image controls
-    function currentSlide(n) {
-    showSlides(slideIndex = n);
-    }
+<h3>Montpelier Border Map</h3>
+<div id="map"></div>
 
-    function showSlides(n) {
-    let i;
-    let slides = document.getElementsByClassName("mySlides");
-    let dots = document.getElementsByClassName("dot");
-    if (n > slides.length) {slideIndex = 1}
-    if (n < 1) {slideIndex = slides.length}
-    for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
-    }
-    for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
-    }
-    slides[slideIndex-1].style.display = "block";
-    dots[slideIndex-1].className += " active";
-    }
-    </script>
-    
-  </body>
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script>
+  // Initialize the map centered somewhere near Montpelier, Vermont
+  var map = L.map('map').setView([44.2601, -72.5754], 13);
+
+  // Add OpenStreetMap tile layer
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(map);
+
+  // Load the GeoJSON file (must be served from a web server)
+  fetch('MontpelierBorder.geojson')
+    .then(response => response.json())
+    .then(data => {
+      // Add the GeoJSON to the map
+      var geojsonLayer = L.geoJSON(data, {
+        style: {
+          color: "green",
+          weight: 2,
+          fillOpacity: 0.3
+        },
+        onEachFeature: function (feature, layer) {
+          if (feature.properties && feature.properties.name) {
+            layer.bindPopup("Name: " + feature.properties.name);
+          }
+        }
+      }).addTo(map);
+
+      // Fit map to the bounds of the GeoJSON layer
+      map.fitBounds(geojsonLayer.getBounds());
+    })
+    .catch(error => console.error('Error loading GeoJSON:', error));
+</script>
+
+</body>
 </html>
