@@ -61,7 +61,10 @@ footer {
       background: #f4f4f4;
       padding: 20px;
     }
-
+.gridimg {
+      max-height:15%;
+      max-width:500px;
+}
 
 
 
