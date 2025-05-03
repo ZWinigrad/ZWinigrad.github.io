@@ -90,7 +90,7 @@
     <p>Short summary...</p>
     <img class="teaser" src="/Headshot.jpg" style="height:300px;width:400px;">
   </div>
-  <div class="project" data-title="Vermont Zoning Atlas" data-description="I worked on the Vermont Zoning Atlas during my time at VERSO, UVM's open source research office. My work consisted of a variety of task including data collection, file cleanup, data structuring, and onboarding new members.">
+  <div class="project" data-title="Vermont Zoning Atlas" data-description="I worked on the Vermont Zoning Atlas during my time at VERSO, UVM's open source research office. My work consisted of a variety of task including data collection, file cleanup, data structuring, and onboarding new members." data-image1="/Headshot.jpg" data-image2="/Headshot.jpg">
     <div class="tag" style="background: #F7BF59;">VERSO</div>
     <h3>Vermont Zoning Atlas</h3>
     <p>Data collection and aggregation of all zoning bylaws in Vermont. This project represents over a year of work from planning to vizualization.</p>
@@ -146,21 +146,49 @@
   <div class="modal-content">
     <span class="close">&times;</span>
     <h2 id="modalTitle"></h2>
-    <p id="modalDescription"></p>
+    <div id="modalImages"></div>
+    <div id="modalDescription"></div>
   </div>
 </div>
+
 
 <script>
   const projects = document.querySelectorAll('.project');
   const modal = document.getElementById('projectModal');
   const modalTitle = document.getElementById('modalTitle');
   const modalDescription = document.getElementById('modalDescription');
+  const modalImages = document.getElementById('modalImages');
   const closeModal = document.querySelector('.close');
 
   projects.forEach(project => {
     project.addEventListener('click', () => {
       modalTitle.textContent = project.getAttribute('data-title');
-      modalDescription.textContent = project.getAttribute('data-description');
+
+      // Clear and load all images
+      modalImages.innerHTML = '';
+      let imgIndex = 1;
+      while (project.getAttribute(`data-image${imgIndex}`)) {
+        const img = document.createElement('img');
+        img.src = project.getAttribute(`data-image${imgIndex}`);
+        img.style.width = '100%';
+        img.style.maxHeight = '300px';
+        img.style.objectFit = 'cover';
+        img.style.marginBottom = '10px';
+        img.style.borderRadius = '5px';
+        modalImages.appendChild(img);
+        imgIndex++;
+      }
+
+      // Clear and load all descriptions
+      modalDescription.innerHTML = '';
+      let descIndex = 1;
+      while (project.getAttribute(`data-description${descIndex}`)) {
+        const p = document.createElement('p');
+        p.textContent = project.getAttribute(`data-description${descIndex}`);
+        modalDescription.appendChild(p);
+        descIndex++;
+      }
+
       modal.style.display = 'block';
     });
   });
@@ -175,6 +203,7 @@
     }
   });
 </script>
+
 
 </body>
 </html>
