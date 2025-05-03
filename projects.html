@@ -78,6 +78,15 @@
       margin-top: 20px;
     }
 
+    .modal-body a {
+      color: #007BFF;
+      text-decoration: none;
+    }
+
+    .modal-body a:hover {
+      text-decoration: underline;
+    }
+
     .close {
       color: #aaa;
       position: absolute;
@@ -101,13 +110,19 @@
     <p>Short summary...</p>
     <img class="teaser" src="/Headshot.jpg" style="height:300px;width:400px;">
   </div>
-  <div class="project" data-title="Vermont Zoning Atlas" data-content1="text:I worked on the Vermont Zoning Atlas during my time at VERSO, UVM's open source research office. My work consisted of a variety of tasks including data collection, file cleanup, data structuring, and onboarding new members." data-content2="image:/Headshot.jpg" data-content3="image:/Headshot.jpg" data-content4="text:I am extra text">
+  <div class="project" data-title="Vermont Zoning Atlas" 
+    data-content1="text:I worked on the Vermont Zoning Atlas during my time at VERSO, UVM's open source research office. My work consisted of a variety of tasks including data collection, file cleanup, data structuring, and onboarding new members." 
+    data-content2="image:https://www.arcgis.com/sharing/rest/content/items/c8c4f421004f46fc862d296f3b277022/resources/ifQqJMwkivWgLivW9yi_M.png?w=800&token=3NKHt6i2urmWtqOuugvr9UTmgLlmEG36o25Dfjqw805hRWbhiizE68gRocfum_TdSZAPKejZ9Los_vSCWILlj6TowVoIErQ3sPpIzJNUzaCSfBjFDcEE0CGHVPpfpYPuei4JC_TCI_4EQ1TYxcrpCKZo3X-e3dVmWMcgmwIzaCfVDGeYnKIUbFQr2uryMsV9" 
+    data-content3="image:/Headshot.jpg" 
+    data-content4="text:I am extra text">
     <div class="tag" style="background: #F7BF59;">VERSO</div>
     <h3>Vermont Zoning Atlas</h3>
     <p>Data collection and aggregation of all zoning bylaws in Vermont. This project represents over a year of work from planning to vizualization.</p>
     <img class="teaser" src="/Headshot.jpg" style="height:300px;width:400px;">
   </div>
-  <div class="project" data-title="Vermont Livability Map" data-description="Description of Project Three.">
+  <div class="project" 
+    data-title="Vermont Livability Map" 
+    data-content1="text: This is the current <a href='https://verso-uvm.github.io/Vermont-Livability-Map/' target='_blank' rel='noopener noreferrer'> Vermont Livability Map </a> where VERSO can show multiple geospatial datasets.">
     <div class="tag" style="background: #F7BF59;">VERSO</div>
     <h3>Vermont Livability Map</h3>
     <p>Integration of GIS and statistical tools into an easily accessible web app, this project required lots of collaboration between web development, data structuring and statistical analysis!</p>
@@ -180,7 +195,7 @@ projects.forEach(project => {
       const content = project.getAttribute(`data-content${i}`);
       if (content.startsWith('text:')) {
         const p = document.createElement('p');
-        p.textContent = content.replace('text:', '');
+        p.innerHTML = content.replace('text:', '');
         modalBody.appendChild(p);
       } else if (content.startsWith('image:')) {
         const img = document.createElement('img');
