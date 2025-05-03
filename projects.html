@@ -66,7 +66,7 @@
       padding: 20px;
       border-radius: 10px;
       width: 80%;
-      max-width: 1000px;
+      max-width: 800px;
       max-height: 90vh;
       overflow: hidden;
       display: flex;
@@ -115,8 +115,10 @@
   <div class="project" data-title="Vermont Zoning Atlas" 
     data-content1="text:I worked on the Vermont Zoning Atlas during my time at VERSO, UVM's open source research office. My work consisted of a variety of tasks including data collection, file cleanup, data structuring, and onboarding new members." 
     data-content2="image:https://www.arcgis.com/sharing/rest/content/items/c8c4f421004f46fc862d296f3b277022/resources/ifQqJMwkivWgLivW9yi_M.png?w=800&token=3NKHt6i2urmWtqOuugvr9UTmgLlmEG36o25Dfjqw805hRWbhiizE68gRocfum_TdSZAPKejZ9Los_vSCWILlj6TowVoIErQ3sPpIzJNUzaCSfBjFDcEE0CGHVPpfpYPuei4JC_TCI_4EQ1TYxcrpCKZo3X-e3dVmWMcgmwIzaCfVDGeYnKIUbFQr2uryMsV9" 
-    data-content3="image:/Headshot.jpg" 
-    data-content4="text:I am extra text">
+    data-content3="text: <h3>What I did:</h3>" 
+    data-content4="text: <ul> <li>Data Entry</li> <li>File Clean up</li> <li>Team Management and Training</li> <li>ArcPy Scripting</li> </ul>"
+    data-content5="text: <h3>Skills I learned:</h3>" 
+    data-content6="text: <ul> <li>Communication</li> <li>ArcGIS Pro Edit and Modify Features Tools</li> <li>Data Structuring (Field Calculator)</li> <li>Spatial Statistics</li></ul>">
     <div class="tag" style="background: #F7BF59;">VERSO</div>
     <h3>Vermont Zoning Atlas</h3>
     <p>Data collection and aggregation of all zoning bylaws in Vermont. This project represents over a year of work from planning to vizualization.</p>
@@ -203,7 +205,7 @@ projects.forEach(project => {
         const img = document.createElement('img');
         img.src = content.replace('image:', '');
         img.style.width = '100%';
-        img.style.maxHeight = '300px';
+        img.style.maxHeight = '400px';
         img.style.objectFit = 'cover';
         img.style.marginBottom = '10px';
         img.style.borderRadius = '5px';
