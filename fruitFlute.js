@@ -128,7 +128,7 @@ function startDrag(e) {
             clonedElem.addEventListener('click', () => {
               createPopupForFruitInstance(fruitData, clonedElem);
             });
-          })
+          }
           .catch(err => {
             console.error("Failed to load sound for fruit:", fruitData.fruit, err);
             clonedElem.addEventListener('click', () => {
@@ -263,9 +263,8 @@ function createPopupForFruitInstance(fruitData, fruitElement) {
     popup.appendChild(document.createElement('br'));
   }
 
-  // Delete button
   const deleteBtn = document.createElement('button');
-  deleteBtn.innerText = 'Delete';
+  deleteBtn.innerText = '🗑️ Delete Fruit';
   deleteBtn.style.marginTop = '10px';
   deleteBtn.addEventListener('click', () => {
     if (source) source.stop();
@@ -274,7 +273,6 @@ function createPopupForFruitInstance(fruitData, fruitElement) {
   });
   popup.appendChild(deleteBtn);
 
-  // Close button
   const closeBtn = document.createElement('button');
   closeBtn.innerText = 'Close';
   closeBtn.style.marginLeft = '10px';
@@ -286,4 +284,6 @@ function createPopupForFruitInstance(fruitData, fruitElement) {
 
   document.body.appendChild(popup);
   fruitElement.dataset.popupOpen = true;
+}
+
 }
