@@ -1,6 +1,5 @@
-
-    // Fruit definitions and mapping to sound
-    const fruitArray = [
+const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+const fruitArray = [
   {id: "1", fruit: "Apple", sound: "slap"},
   {id: "2", fruit: "Asian Pear", sound: "slap"},
   {id: "3", fruit: "Avocado", sound: ""},
@@ -25,145 +24,163 @@
   {id: "22", fruit: "Watermelon", sound: ""},
 ];
 
-    // Map sound keys to hosted MP3 URLs (must be on your origin or allowed by media-src)
-    const soundRegistry = {
-      slap: "https://files.catbox.moe/d8cs22.mp3"
-      // you can add other sounds: punch: "/sounds/punch.mp3", etc.
-    };
+const draggableItems = document.querySelectorAll('.draggable');
+const musicArea = document.querySelector('.music');
+let draggingElem = null;
 
-    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-    const musicArea = document.querySelector('.music');
-    const draggableItems = document.querySelectorAll('.draggable');
+draggableItems.forEach(item => {
+  item.addEventListener('mousedown', startDrag);
+});
 
-    let draggingElem = null;
+function startDrag(e) {
+  e.preventDefault();
 
-    draggableItems.forEach(item => {
-      item.addEventListener('mousedown', startDrag);
-    });
+  const original = e.target;
+  const fruitId = original.dataset.id;
+  const fruitData = fruitArray.find(f => f.id === fruitId);
 
-    function startDrag(e) {
-      e.preventDefault();
-      const original = e.target;
-      const fruitId = original.getAttribute('data-id');
-      const fruitData = fruitArray.find(f => f.id === fruitId);
+  draggingElem = original.cloneNode(true);
+  draggingElem.style.position = 'absolute';
+  draggingElem.style.pointerEvents = 'none';
+  draggingElem.style.opacity = 0.8;
+  draggingElem.style.zIndex = 2000;
+  draggingElem.style.width = original.offsetWidth + 'px';
+  draggingElem.style.height = original.offsetHeight + 'px';
 
-      // Clone the element for dragging
-      draggingElem = original.cloneNode(true);
+  document.body.appendChild(draggingElem);
+  moveAt(e.pageX, e.pageY);
+
+  function moveAt(pageX, pageY) {
+    draggingElem.style.left = pageX - draggingElem.offsetWidth / 2 + 'px';
+    draggingElem.style.top = pageY - draggingElem.offsetHeight / 2 + 'px';
+  }
+
+  function onMouseMove(event) {
+    moveAt(event.pageX, event.pageY);
+  }
+
+  function onMouseUp(event) {
+    document.removeEventListener('mousemove', onMouseMove);
+    document.removeEventListener('mouseup', onMouseUp);
+
+    const musicRect = musicArea.getBoundingClientRect();
+    const isInMusicArea =
+      event.clientX > musicRect.left &&
+      event.clientX < musicRect.right &&
+      event.clientY > musicRect.top &&
+      event.clientY < musicRect.bottom;
+
+    if (isInMusicArea) {
+      musicArea.appendChild(draggingElem);
       draggingElem.style.position = 'absolute';
-      draggingElem.style.pointerEvents = 'none';
-      draggingElem.style.opacity = 0.8;
-      draggingElem.style.zIndex = 2000;
-      draggingElem.style.width = original.offsetWidth + 'px';
-      draggingElem.style.height = original.offsetHeight + 'px';
-      document.body.appendChild(draggingElem);
+      draggingElem.style.left = (event.clientX - musicRect.left - draggingElem.offsetWidth / 2) + 'px';
+      draggingElem.style.top = (event.clientY - musicRect.top - draggingElem.offsetHeight / 2) + 'px';
+      draggingElem.style.pointerEvents = 'auto';
 
-      moveAt(e.pageX, e.pageY);
+      if (fruitData && fruitData.sound) {
+        fetch(fruitData.sound)
+          .then(res => res.arrayBuffer())
+          .then(data => audioContext.decodeAudioData(data))
+          .then(buffer => {
+            const source = audioContext.createBufferSource();
+            const gainNode = audioContext.createGain();
+            source.buffer = buffer;
+            source.loop = true; // 🔁 LOOP FIX
+            source.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            source.start();
 
-      function moveAt(pageX, pageY) {
-        draggingElem.style.left = pageX - draggingElem.offsetWidth / 2 + 'px';
-        draggingElem.style.top = pageY - draggingElem.offsetHeight / 2 + 'px';
-      }
+            // Store audio context parts in the DOM element
+            const instanceId = `audio-${Date.now()}`;
+            draggingElem.dataset.audioId = instanceId;
+            draggingElem._audioData = { source, gainNode, buffer };
 
-      function onMouseMove(evt) {
-        moveAt(evt.pageX, evt.pageY);
-      }
-
-      function onMouseUp(evt) {
-        document.removeEventListener('mousemove', onMouseMove);
-        document.removeEventListener('mouseup', onMouseUp);
-
-        const musicRect = musicArea.getBoundingClientRect();
-        const isInMusicArea =
-          evt.clientX > musicRect.left &&
-          evt.clientX < musicRect.right &&
-          evt.clientY > musicRect.top &&
-          evt.clientY < musicRect.bottom;
-
-        if (isInMusicArea) {
-          // Place inside music area
-          musicArea.appendChild(draggingElem);
-          draggingElem.style.position = 'absolute';
-          draggingElem.style.left = (evt.clientX - musicRect.left - draggingElem.offsetWidth / 2) + 'px';
-          draggingElem.style.top = (evt.clientY - musicRect.top - draggingElem.offsetHeight / 2) + 'px';
-          draggingElem.style.pointerEvents = 'auto';
-
-          // Play sound if defined
-          if (fruitData && fruitData.sound && soundRegistry[fruitData.sound]) {
-            playSound(soundRegistry[fruitData.sound]);
-          }
-
-          // Optionally attach click for popup controls
-          setTimeout(() => {
+            // Add click to open popup
             draggingElem.addEventListener('click', () => {
-              showAudioPopup(fruitData, draggingElem);
+              createPopupForFruitInstance(fruitData, draggingElem);
             });
-          }, 100);
-        } else {
-          // Dropped outside → remove
-          draggingElem.remove();
-        }
-
-        draggingElem = null;
+          });
       }
-
-      document.addEventListener('mousemove', onMouseMove);
-      document.addEventListener('mouseup', onMouseUp);
+    } else {
+      draggingElem.remove();
     }
 
-    function playSound(url) {
-      // Resume context if needed (user gesture matters)
-      if (audioCtx.state === 'suspended') {
-        audioCtx.resume();
-      }
-      fetch(url)
-        .then(resp => resp.arrayBuffer())
-        .then(buf => audioCtx.decodeAudioData(buf))
-        .then(audioBuffer => {
-          const source = audioCtx.createBufferSource();
-          source.buffer = audioBuffer;
-          source.connect(audioCtx.destination);
-          source.start(0);
-          // We don’t keep track in this version — for popup controls you'd wrap this
-        })
-        .catch(err => {
-          console.error('Error playing sound:', err);
-        });
-    }
+    draggingElem = null;
+  }
 
-    function showAudioPopup(fruitData, elem) {
-      // In this simpler version, no persistent audio node is stored,
-      // so the popup might not do much. But you can design it to
-      // show fruit name or future controls.
-      let existing = elem._popup;
-      if (existing) {
-        existing.style.display = 'block';
-        return;
-      }
-      const popup = document.createElement('div');
-      popup.style.position = 'fixed';
-      popup.style.top = '20%';
-      popup.style.left = '50%';
-      popup.style.transform = 'translateX(-50%)';
-      popup.style.background = '#fff';
-      popup.style.border = '2px solid #333';
-      popup.style.padding = '10px';
-      popup.style.zIndex = 9999;
+  document.addEventListener('mousemove', onMouseMove);
+  document.addEventListener('mouseup', onMouseUp);
+}
 
-      const title = document.createElement('h3');
-      title.innerText = fruitData.fruit + " Controls";
-      popup.appendChild(title);
+function createPopupForFruitInstance(fruitData, fruitElement) {
+  // Prevent multiple popups
+  if (fruitElement.dataset.popupOpen) return;
 
-      const note = document.createElement('p');
-      note.innerText = "Sound playing is one-shot (no controls in this version).";
-      popup.appendChild(note);
+  const { source, gainNode } = fruitElement._audioData;
+  if (!source || !gainNode) return;
 
-      const closeBtn = document.createElement('button');
-      closeBtn.innerText = "Close";
-      closeBtn.onclick = () => {
-        popup.style.display = 'none';
-      };
-      popup.appendChild(closeBtn);
+  const popup = document.createElement('div');
+  popup.classList.add('audio-popup');
+  Object.assign(popup.style, {
+    position: 'fixed',
+    top: '20%',
+    left: '50%',
+    transform: 'translateX(-50%)',
+    background: '#fff',
+    border: '4px solid red',
+    padding: '20px',
+    borderRadius: '8px',
+    boxShadow: '0 4px 10px rgba(0,0,0,0.2)',
+    zIndex: 9999,
+    minHeight: '100px',
+    minWidth: '300px',
+  });
 
-      document.body.appendChild(popup);
-      elem._popup = popup;
-    }
+  const title = document.createElement('h3');
+  title.innerText = `${fruitData.fruit} Controls`;
+  popup.appendChild(title);
+
+  // Volume
+  const volumeLabel = document.createElement('label');
+  volumeLabel.innerText = 'Volume: ';
+  const volumeSlider = document.createElement('input');
+  volumeSlider.type = 'range';
+  volumeSlider.min = 0;
+  volumeSlider.max = 2;
+  volumeSlider.step = 0.01;
+  volumeSlider.value = gainNode.gain.value;
+  volumeSlider.addEventListener('input', () => {
+    gainNode.gain.value = volumeSlider.value;
+  });
+  volumeLabel.appendChild(volumeSlider);
+  popup.appendChild(volumeLabel);
+  popup.appendChild(document.createElement('br'));
+
+  // Pitch
+  const pitchLabel = document.createElement('label');
+  pitchLabel.innerText = 'Pitch (PlaybackRate): ';
+  const pitchSlider = document.createElement('input');
+  pitchSlider.type = 'range';
+  pitchSlider.min = 0.5;
+  pitchSlider.max = 2;
+  pitchSlider.step = 0.01;
+  pitchSlider.value = source.playbackRate.value;
+  pitchSlider.addEventListener('input', () => {
+    source.playbackRate.value = pitchSlider.value;
+  });
+  pitchLabel.appendChild(pitchSlider);
+  popup.appendChild(pitchLabel);
+  popup.appendChild(document.createElement('br'));
+
+  // Close button
+  const closeBtn = document.createElement('button');
+  closeBtn.innerText = 'Close';
+  closeBtn.addEventListener('click', () => {
+    popup.remove();
+    delete fruitElement.dataset.popupOpen;
+  });
+  popup.appendChild(closeBtn);
+
+  document.body.appendChild(popup);
+  fruitElement.dataset.popupOpen = true;
+}
