@@ -23,6 +23,14 @@ const fruitArray = [
   { id: "21", fruit: "Strawberry", sound: "" },
   { id: "22", fruit: "Watermelon", sound: "" },
 ];
+const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+
+const fruitArray = [
+  { id: "1", fruit: "Apple", sound: "slap.mp3" },
+  { id: "2", fruit: "Asian Pear", sound: "slap.mp3" },
+  { id: "3", fruit: "Avocado", sound: "" },
+  // Add more fruits here...
+];
 
 const draggableItems = document.querySelectorAll('.draggable');
 const musicArea = document.querySelector('.music');
@@ -93,13 +101,13 @@ function startDrag(e) {
             const gainNode = audioContext.createGain();
             const panner = audioContext.createStereoPanner();
             const filter = audioContext.createBiquadFilter();
+
             filter.type = 'lowpass';
-            filter.frequency.value = 10000; // default full range
+            filter.frequency.value = 10000;
 
             source.buffer = buffer;
             source.loop = true;
 
-            // Connect audio chain
             source.connect(gainNode);
             gainNode.connect(panner);
             panner.connect(filter);
@@ -118,9 +126,13 @@ function startDrag(e) {
               createPopupForFruitInstance(fruitData, clonedElem);
             });
           })
-          .catch(err => console.error("Failed to load sound for fruit:", fruitData.fruit, err));
+          .catch(err => {
+            console.error("Failed to load sound for fruit:", fruitData.fruit, err);
+            clonedElem.addEventListener('click', () => {
+              createPopupForFruitInstance(fruitData, clonedElem);
+            });
+          });
       } else {
-        // No sound, still allow popup
         clonedElem.addEventListener('click', () => {
           createPopupForFruitInstance(fruitData, clonedElem);
         });
@@ -162,7 +174,6 @@ function createPopupForFruitInstance(fruitData, fruitElement) {
   title.innerText = `${fruitData.fruit} Controls`;
   popup.appendChild(title);
 
-  // Volume control
   if (gainNode) {
     const volumeLabel = document.createElement('label');
     volumeLabel.innerText = 'Volume: ';
@@ -180,7 +191,6 @@ function createPopupForFruitInstance(fruitData, fruitElement) {
     popup.appendChild(document.createElement('br'));
   }
 
-  // Pitch control
   if (source) {
     const pitchLabel = document.createElement('label');
     pitchLabel.innerText = 'Pitch (Playback Rate): ';
@@ -198,7 +208,6 @@ function createPopupForFruitInstance(fruitData, fruitElement) {
     popup.appendChild(document.createElement('br'));
   }
 
-  // Panning control
   if (panner) {
     const panLabel = document.createElement('label');
     panLabel.innerText = 'Pan (Left ↔ Right): ';
@@ -216,10 +225,9 @@ function createPopupForFruitInstance(fruitData, fruitElement) {
     popup.appendChild(document.createElement('br'));
   }
 
-  // Low-pass filter control
   if (filter) {
     const filterLabel = document.createElement('label');
-    filterLabel.innerText = 'Low-pass (Muffle): ';
+    filterLabel.innerText = 'Low-pass Filter (Muffle): ';
     const filterSlider = document.createElement('input');
     filterSlider.type = 'range';
     filterSlider.min = 100;
@@ -234,7 +242,6 @@ function createPopupForFruitInstance(fruitData, fruitElement) {
     popup.appendChild(document.createElement('br'));
   }
 
-  // Delete Button
   const deleteBtn = document.createElement('button');
   deleteBtn.innerText = '🗑️ Delete Fruit';
   deleteBtn.style.marginTop = '10px';
@@ -245,7 +252,6 @@ function createPopupForFruitInstance(fruitData, fruitElement) {
   });
   popup.appendChild(deleteBtn);
 
-  // Close Button
   const closeBtn = document.createElement('button');
   closeBtn.innerText = 'Close';
   closeBtn.style.marginLeft = '10px';
@@ -260,6 +266,10 @@ function createPopupForFruitInstance(fruitData, fruitElement) {
 }
 
 
-  document.body.appendChild(popup);
-  fruitElement.dataset.popupOpen = true;
-}
+
+
+
+
+
+
+
