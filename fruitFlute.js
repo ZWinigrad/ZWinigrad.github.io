@@ -71,42 +71,49 @@ function startDrag(e) {
       event.clientY < musicRect.bottom;
 
     if (isInMusicArea) {
-      musicArea.appendChild(draggingElem);
-      draggingElem.style.position = 'absolute';
-      draggingElem.style.left = (event.clientX - musicRect.left - draggingElem.offsetWidth / 2) + 'px';
-      draggingElem.style.top = (event.clientY - musicRect.top - draggingElem.offsetHeight / 2) + 'px';
-      draggingElem.style.pointerEvents = 'auto';
+  const clonedElem = draggingElem;
+  musicArea.appendChild(clonedElem);
+  clonedElem.style.position = 'absolute';
+  clonedElem.style.left = (event.clientX - musicRect.left - clonedElem.offsetWidth / 2) + 'px';
+  clonedElem.style.top = (event.clientY - musicRect.top - clonedElem.offsetHeight / 2) + 'px';
+  clonedElem.style.pointerEvents = 'auto';
 
-      if (fruitData && fruitData.sound) {
-        const audioFilePath = `/sounds/${fruitData.sound}`;
+  if (fruitData && fruitData.sound) {
+    const audioFilePath = `/sounds/${fruitData.sound}`;
 
-        fetch(audioFilePath)
-          .then(res => res.arrayBuffer())
-          .then(data => audioContext.decodeAudioData(data))
-          .then(buffer => {
-            const source = audioContext.createBufferSource();
-            const gainNode = audioContext.createGain();
-            source.buffer = buffer;
-            source.loop = true;
-            source.connect(gainNode);
-            gainNode.connect(audioContext.destination);
-            source.start();
+    fetch(audioFilePath)
+      .then(res => res.arrayBuffer())
+      .then(data => audioContext.decodeAudioData(data))
+      .then(buffer => {
+        const source = audioContext.createBufferSource();
+        const gainNode = audioContext.createGain();
+        source.buffer = buffer;
+        source.loop = true;
+        source.connect(gainNode);
+        gainNode.connect(audioContext.destination);
+        source.start();
 
-            // Store references on the dragged element so we can manipulate or stop later
-            draggingElem.dataset.playingAudio = audioFilePath;
-            draggingElem._audioNodes = { source, gainNode };
+        // Store references on the element
+        clonedElem.dataset.playingAudio = audioFilePath;
+        clonedElem._audioNodes = { source, gainNode };
 
-            // Store audio context parts in the DOM element
-            const instanceId = `audio-${Date.now()}`;
-            draggingElem.dataset.audioId = instanceId;
-            draggingElem._audioData = { source, gainNode, buffer };
+        const instanceId = `audio-${Date.now()}`;
+        clonedElem.dataset.audioId = instanceId;
+        clonedElem._audioData = { source, gainNode, buffer };
 
-            // Add click to open popup
-            draggingElem.addEventListener('click', () => {
-              createPopupForFruitInstance(fruitData, draggingElem);
-            });
-          })
-          .catch(err => console.error("Failed to load sound for fruit:", fruitData.fruit, err));
+        // Enable click for popup
+        clonedElem.addEventListener('click', () => {
+          createPopupForFruitInstance(fruitData, clonedElem);
+        });
+      })
+      .catch(err => console.error("Failed to load sound for fruit:", fruitData.fruit, err));
+  } else {
+    // Optional: even if no sound, add popup
+    clonedElem.addEventListener('click', () => {
+      createPopupForFruitInstance(fruitData, clonedElem);
+    });
+  }
+};
       } else {
         // If no sound, just add click listener for popup anyway (optional)
         draggingElem.addEventListener('click', () => {
