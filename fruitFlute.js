@@ -1,27 +1,27 @@
 const audioContext = new (window.AudioContext || window.webkitAudioContext)();
 const fruitArray = [
-  {id: "1", fruit: "Apple", sound: "slap.mp3"},
-  {id: "2", fruit: "Asian Pear", sound: "slap.mp3"},
-  {id: "3", fruit: "Avocado", sound: ""},
-  {id: "4", fruit: "Banana", sound: ""},
-  {id: "5", fruit: "Blackberry", sound: ""},
-  {id: "6", fruit: "Blueberry", sound: ""},
-  {id: "7", fruit: "Cantaloupe", sound: ""},
-  {id: "8", fruit: "Cherry", sound: ""},
-  {id: "9", fruit: "Dragonfruit", sound: ""},
-  {id: "10", fruit: "Grapefruit", sound: ""},
-  {id: "11", fruit: "Grapes", sound: ""},
-  {id: "12", fruit: "Honeydew", sound: ""},
-  {id: "13", fruit: "Kiwi", sound: ""},
-  {id: "14", fruit: "Orange", sound: ""},
-  {id: "15", fruit: "Peach", sound: ""},
-  {id: "16", fruit: "Pear", sound: ""},
-  {id: "17", fruit: "Pineapple", sound: ""},
-  {id: "18", fruit: "Plum", sound: ""},
-  {id: "19", fruit: "Pomegranate", sound: ""},  
-  {id: "20", fruit: "Raspberry", sound: ""},
-  {id: "21", fruit: "Strawberry", sound: ""},
-  {id: "22", fruit: "Watermelon", sound: ""},
+  { id: "1", fruit: "Apple", sound: "slap.mp3" },
+  { id: "2", fruit: "Asian Pear", sound: "slap.mp3" },
+  { id: "3", fruit: "Avocado", sound: "" },
+  { id: "4", fruit: "Banana", sound: "" },
+  { id: "5", fruit: "Blackberry", sound: "" },
+  { id: "6", fruit: "Blueberry", sound: "" },
+  { id: "7", fruit: "Cantaloupe", sound: "" },
+  { id: "8", fruit: "Cherry", sound: "" },
+  { id: "9", fruit: "Dragonfruit", sound: "" },
+  { id: "10", fruit: "Grapefruit", sound: "" },
+  { id: "11", fruit: "Grapes", sound: "" },
+  { id: "12", fruit: "Honeydew", sound: "" },
+  { id: "13", fruit: "Kiwi", sound: "" },
+  { id: "14", fruit: "Orange", sound: "" },
+  { id: "15", fruit: "Peach", sound: "" },
+  { id: "16", fruit: "Pear", sound: "" },
+  { id: "17", fruit: "Pineapple", sound: "" },
+  { id: "18", fruit: "Plum", sound: "" },
+  { id: "19", fruit: "Pomegranate", sound: "" },
+  { id: "20", fruit: "Raspberry", sound: "" },
+  { id: "21", fruit: "Strawberry", sound: "" },
+  { id: "22", fruit: "Watermelon", sound: "" },
 ];
 
 const draggableItems = document.querySelectorAll('.draggable');
@@ -71,53 +71,44 @@ function startDrag(e) {
       event.clientY < musicRect.bottom;
 
     if (isInMusicArea) {
-  const clonedElem = draggingElem;
-  musicArea.appendChild(clonedElem);
-  clonedElem.style.position = 'absolute';
-  clonedElem.style.left = (event.clientX - musicRect.left - clonedElem.offsetWidth / 2) + 'px';
-  clonedElem.style.top = (event.clientY - musicRect.top - clonedElem.offsetHeight / 2) + 'px';
-  clonedElem.style.pointerEvents = 'auto';
+      const clonedElem = draggingElem;
+      musicArea.appendChild(clonedElem);
+      clonedElem.style.position = 'absolute';
+      clonedElem.style.left = (event.clientX - musicRect.left - clonedElem.offsetWidth / 2) + 'px';
+      clonedElem.style.top = (event.clientY - musicRect.top - clonedElem.offsetHeight / 2) + 'px';
+      clonedElem.style.pointerEvents = 'auto';
 
-  if (fruitData && fruitData.sound) {
-    const audioFilePath = `/sounds/${fruitData.sound}`;
+      if (fruitData && fruitData.sound) {
+        const audioFilePath = `/sounds/${fruitData.sound}`;
 
-    fetch(audioFilePath)
-      .then(res => res.arrayBuffer())
-      .then(data => audioContext.decodeAudioData(data))
-      .then(buffer => {
-        const source = audioContext.createBufferSource();
-        const gainNode = audioContext.createGain();
-        source.buffer = buffer;
-        source.loop = true;
-        source.connect(gainNode);
-        gainNode.connect(audioContext.destination);
-        source.start();
+        fetch(audioFilePath)
+          .then(res => res.arrayBuffer())
+          .then(data => audioContext.decodeAudioData(data))
+          .then(buffer => {
+            const source = audioContext.createBufferSource();
+            const gainNode = audioContext.createGain();
+            source.buffer = buffer;
+            source.loop = true;
+            source.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            source.start();
 
-        // Store references on the element
-        clonedElem.dataset.playingAudio = audioFilePath;
-        clonedElem._audioNodes = { source, gainNode };
+            clonedElem.dataset.playingAudio = audioFilePath;
+            clonedElem._audioNodes = { source, gainNode };
 
-        const instanceId = `audio-${Date.now()}`;
-        clonedElem.dataset.audioId = instanceId;
-        clonedElem._audioData = { source, gainNode, buffer };
+            const instanceId = `audio-${Date.now()}`;
+            clonedElem.dataset.audioId = instanceId;
+            clonedElem._audioData = { source, gainNode, buffer };
 
-        // Enable click for popup
+            clonedElem.addEventListener('click', () => {
+              createPopupForFruitInstance(fruitData, clonedElem);
+            });
+          })
+          .catch(err => console.error("Failed to load sound for fruit:", fruitData.fruit, err));
+      } else {
+        // No sound, still allow popup
         clonedElem.addEventListener('click', () => {
           createPopupForFruitInstance(fruitData, clonedElem);
-        });
-      })
-      .catch(err => console.error("Failed to load sound for fruit:", fruitData.fruit, err));
-  } else {
-    // Optional: even if no sound, add popup
-    clonedElem.addEventListener('click', () => {
-      createPopupForFruitInstance(fruitData, clonedElem);
-    });
-  }
-};
-      } else {
-        // If no sound, just add click listener for popup anyway (optional)
-        draggingElem.addEventListener('click', () => {
-          createPopupForFruitInstance(fruitData, draggingElem);
         });
       }
     } else {
@@ -132,11 +123,11 @@ function startDrag(e) {
 }
 
 function createPopupForFruitInstance(fruitData, fruitElement) {
-  // Prevent multiple popups
   if (fruitElement.dataset.popupOpen) return;
 
-  const { source, gainNode } = fruitElement._audioData || {};
-  if (!source || !gainNode) return;
+  const audioData = fruitElement._audioData;
+  const source = audioData?.source;
+  const gainNode = audioData?.gainNode;
 
   const popup = document.createElement('div');
   popup.classList.add('audio-popup');
@@ -159,39 +150,42 @@ function createPopupForFruitInstance(fruitData, fruitElement) {
   title.innerText = `${fruitData.fruit} Controls`;
   popup.appendChild(title);
 
-  // Volume Control
-  const volumeLabel = document.createElement('label');
-  volumeLabel.innerText = 'Volume: ';
-  const volumeSlider = document.createElement('input');
-  volumeSlider.type = 'range';
-  volumeSlider.min = 0;
-  volumeSlider.max = 2;
-  volumeSlider.step = 0.01;
-  volumeSlider.value = gainNode.gain.value;
-  volumeSlider.addEventListener('input', () => {
-    gainNode.gain.value = volumeSlider.value;
-  });
-  volumeLabel.appendChild(volumeSlider);
-  popup.appendChild(volumeLabel);
-  popup.appendChild(document.createElement('br'));
+  // Volume control (if audio exists)
+  if (gainNode) {
+    const volumeLabel = document.createElement('label');
+    volumeLabel.innerText = 'Volume: ';
+    const volumeSlider = document.createElement('input');
+    volumeSlider.type = 'range';
+    volumeSlider.min = 0;
+    volumeSlider.max = 2;
+    volumeSlider.step = 0.01;
+    volumeSlider.value = gainNode.gain.value;
+    volumeSlider.addEventListener('input', () => {
+      gainNode.gain.value = volumeSlider.value;
+    });
+    volumeLabel.appendChild(volumeSlider);
+    popup.appendChild(volumeLabel);
+    popup.appendChild(document.createElement('br'));
+  }
 
-  // Pitch Control
-  const pitchLabel = document.createElement('label');
-  pitchLabel.innerText = 'Pitch (PlaybackRate): ';
-  const pitchSlider = document.createElement('input');
-  pitchSlider.type = 'range';
-  pitchSlider.min = 0.5;
-  pitchSlider.max = 2;
-  pitchSlider.step = 0.01;
-  pitchSlider.value = source.playbackRate.value;
-  pitchSlider.addEventListener('input', () => {
-    source.playbackRate.value = pitchSlider.value;
-  });
-  pitchLabel.appendChild(pitchSlider);
-  popup.appendChild(pitchLabel);
-  popup.appendChild(document.createElement('br'));
+  // Pitch control (if audio exists)
+  if (source) {
+    const pitchLabel = document.createElement('label');
+    pitchLabel.innerText = 'Pitch (PlaybackRate): ';
+    const pitchSlider = document.createElement('input');
+    pitchSlider.type = 'range';
+    pitchSlider.min = 0.5;
+    pitchSlider.max = 2;
+    pitchSlider.step = 0.01;
+    pitchSlider.value = source.playbackRate.value;
+    pitchSlider.addEventListener('input', () => {
+      source.playbackRate.value = pitchSlider.value;
+    });
+    pitchLabel.appendChild(pitchSlider);
+    popup.appendChild(pitchLabel);
+    popup.appendChild(document.createElement('br'));
+  }
 
-  // Close Button
   const closeBtn = document.createElement('button');
   closeBtn.innerText = 'Close';
   closeBtn.addEventListener('click', () => {
