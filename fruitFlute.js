@@ -259,7 +259,7 @@ function createPopupForFruitInstance(fruitData, fruitElement) {
   }
 
   const deleteBtn = document.createElement('button');
-  deleteBtn.innerText = '🗑️ Delete Fruit';
+  deleteBtn.innerText = 'Delete Fruit';
   deleteBtn.style.marginTop = '10px';
   deleteBtn.addEventListener('click', () => {
     if (source) source.stop();
