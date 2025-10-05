@@ -1,168 +1,232 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link href="/style.css" rel="stylesheet" type="text/css" media="all">
-  <link rel="icon" type="image/png" href="/favicon.png"/>
-  <link rel="icon" type="image/png" href="https://example.com/favicon.png"/>
-  <title>Your Name | Portfolio</title>
-</head>
-<body>
-
-  <nav>
-    <a href="/about.html" id="about">About</a>
-    <a href="/projects.html" id="projects">Projects</a>
-    <a href="/resume.html" id="resume">Resume</a>
-  </nav>
-
-  <header class="hero" style="background-image: url('/assests/intro.png');background-size:cover;display:flex;">
-    <div style="background-color: rgba(255,255,255,0.5);margin:auto;padding:15px;">
-	<h1>Zachary Winigrad</h1>
-    	<p> GIS Portfolio </p>
-    </div>
-  </header>
-
-  <section id="about">
-    <h2>About Me</h2>
-    <div class="projects">
-      <div>
-        <p>
-          Hi! My name is Zachary Winigrad, I am an Environmental Science and Applied Ecology double major with a minor in Geospatial Technologies. My work focuses on data analyses and visualizations, take a look at my projects for more details!
-        </p>
-        <button> More About Me</button>
-      </div>
-      <div>
-        <img src="/Headshot.jpg">
-      </div>
-    </div>
-  </section>
-
-  <section id="projects">
-    <h2>Projects</h2>
-    <div class="projects">
-      <div class="project-card" href="/projects.html">
-        <h3>Vanasse Hangen Brustlin</h3>
-        <p>______</p>
-        <img class="gridimg" src="/Headshot.jpg">
-      </div>
-      <div class="project-card" href="/projects.html">
-        <h3>Vermont Zoning Atlas</h3>
-        <p>An open source project that mapped all zoning districts across the state of Vermont. This project evolved into an interactive web app that incorperates socio-economic and natural resource data.</p>
-        <img class="gridimg" src="/Headshot.jpg">
-      </div>
-      <div class="project-card" href="/projects.html">
-        <h3>Smokey House Center</h3>
-        <p>Smokey House Center is a non-profit in Danby, Vermont that I worked with for the summer of 2024. I collaborated on various projects, ranging from experimental forestry design with Dr. Lee Allen to creating base maps to show research partners and investors.</p>
-        <img class="gridimg" src="/Headshot.jpg">
-      </div>
-      <div class="project-card" href="/projects.html">
-        <h3>Vermont Geological Survey</h3>
-        <p>I interned under Dr. Stephen Wright during the summer and fall of 2024 to map surficial and glacial geology of the Sutton quadrangle in Northeastern Vermont. </p>
-        <img class="gridimg" src="/Headshot.jpg">
-      </div>
-      <div class="project-card" href="/projects.html">
-        <h3>University of Vermont Spatial Analysis Lab</h3>
-        <p>My work at the SAL consisted of manual corrections (QA/QC) to automated feature extraction datasets.</p>
-        <img class="gridimg" src="/Headshot.jpg">
-      </div>
-      <div class="project-card" href="/projects.html">
-        <h3>Personal Projects</h3>
-        <p>A hodge podge of projects that I have worked on for myself! These mostly involve learning new tools and pushing myself outside of my comfort zone. Some of these are current works in progress!</p>
-        <img class="gridimg" src="/Headshot.jpg">
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <h2>Contact</h2>
-    <p>Zachary.Winigrad@gmail.com</p>
-    <p><a href="https://www.linkedin.com/in/zachary-winigrad" target="_blank">LinkedIn</a></p>
-    <p><a href="https://github.com/ZWinigrad" target="_blank">GitHub</a></p>
-  </footer>
-
-</body>
-</html>
-
-
-<!-- 
-<!DOCTYPE html>
 <html>
-<head>
-  <title>Leaflet Map with External GeoJSON</title>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The web site of zwinigrad</title>
+    <!-- The style.css file allows you to change the look of your web pages.
+         If you include the next line in all your web pages, they will all share the same look.
+         This makes it easier to make new pages for your site. -->
+    <link href="/style.css" rel="stylesheet" type="text/css" media="all">
+    <script>
+      const fruitBloop = new Audio();
+      fruitBloop.src = "https://files.catbox.moe/f5tzag.mp3";
+      
+      const flyBuzz = new Audio();
+      flyBuzz.src = "https://files.catbox.moe/87s650.mp3";
+      
+      const slap = new Audio();
+      slap.src = "https://files.catbox.moe/d8cs22.mp3";
+      
+      window.addEventListener('load', function() {
+        flyBuzz.loop = true;
+        flyBuzz.play();
+      });  
+      
+      
+    </script>
+  </head>
+  <body id="body">
+    
+    
+    
+    <div style="background-image:radial-gradient(circle, white 35%, grey, black);height:100%;width:100%;left:0;top:0;position:fixed">
+      <img src="/bowl.png" style="position:fixed;top:45%;left:25%;width:50%;height:50%">
+      
+      <button id="buzzToggle" style="position:fixed;top:90%;left:5%;">Toggle <br> Buzz</button>
+      
+       <button id="newBug" style="position:fixed;top:90%;left:10%;">More <br> Bugs</button>
+      
+      <a href="/fruitsMostWanted.html">
+        <img id="pom" src="/pixelpom.png" style="position:fixed;top:15%;left:30%;width:20%;rotate:315deg;">
+      </a>
+      
+      <a href="/fruitFlute.html"> 
+        <img id="pear"  src="/pear.png" style="position:fixed;top:15%;left:47%;width:15%;rotate:25deg;">
+      </a>  
+      
+      <a href="/fruitToots">  
+        <img id="banana"  src="/banana.png" style="position:fixed;top:30%;left:27%;width:25%;">
+      </a>  
+      
+      <a href="/Games.html">  
+        <img id="grapes"  src="/grapes.png" style="position:fixed;top:35%;left:35%;width:25%;">
+      </a>  
+       
+      <a href="/fruitShoot.html">  
+        <img id="mango"  src="/pixelMango4.png" style="position:fixed;top:35%;left:55%;width:20%;rotate:135deg;">
+      </a>  
+      
+      <a href="/fruitMostWanted.html">  
+        <img id="orange"  src="/pixelOrange4.png" style="position:fixed;top:45%;left:45%;width:15%;">
+      </a>  
+       
+      <a href="/aboutMe.html">  
+        <img id="grapefruit"  src="/grapefruit.png" style="position:fixed;top:70%;left:75%;width:25%;">
+      </a>  
+      
+      <a href="/fruitSuits.html">  
+        <img id="strawberry"  src="/strawberry.png" style="position:fixed;top:8%;left:45%;width:10%;rotate:15deg;">
+      </a>
+
+      <img src="/bowl2.png" style="position:fixed;top:50%;left:25%;width:50%;height:45%;pointer-events:none;">
+      
+    </div>
+    
+    <div id="menuPopup" style="display: none; position: fixed; top: 20%; left: 80%; transform: translate(-50%, -50%); background-color: white; padding: 20px; border: 1px solid black;">
+      <h2 id="title" style="text-align:center;"></h2>
+      <p id="desc" style="text-align:center;"></p>
+    </div>
+    
+    <img src="/fly.png" id="fly" style="position:fixed;top:5%;left:25%;width:4%;height:6%;transition:left 0.5s ease, top 0.5s ease;">
+    
+    
+  <script>
+    const strawberry = document.getElementById("strawberry")
+    const mango = document.getElementById("mango")
+    const pear = document.getElementById("pear")
+    const banana = document.getElementById("banana")
+    const pom = document.getElementById("pom")
+    const grapes = document.getElementById("grapes")
+    const orange = document.getElementById("orange")
+    const grapefruit = document.getElementById("grapefruit")
+    
+    const fruitArray = [
+      {element: strawberry, page: "Fruit Suits", desc: "Dress up fruits!"},
+      {element: mango, page: "Fruit Shoot", desc: "Protect your fruits via gun violence!"},
+      {element: pear, page: "Fruit Flute", desc: "Fruit music!?"},
+      {element: banana, page: "Fruit Toots", desc: "Musical fruits!?"},
+      {element: pom, page: "Fruits Most Wanted", desc: "Fruit criminals!"},
+      {element: grapes, page: "Games", desc: "Games to play with your favorite fruits!"},
+      {element: orange, page: "Fruit's Most Wanted", desc: "Fruits I want the most!"},
+      {element: grapefruit, page: "About Me", desc: "More abut your favorite fruit!"}
+      ];
+    const fruits = Array.from(fruitArray);
+    
+    fruits.forEach(item => {
+    item.element.addEventListener('mouseover', function() {
+      fruitBloop.play();
+        if (fruitBloop.paused) {
+          fruitBloop.play();
+        }else{
+          fruitBloop.currentTime = 0
+        }
+      item.element.classList.add('highlight');
+      menuPopup.style.display = "block";
+      document.getElementById("title").textContent = item.page;
+      document.getElementById("desc").textContent = item.desc;
+    });
+  });
   
-  <style>
-    #map {
-      height: 600px;
+    fruits.forEach(item => {
+    item.element.addEventListener('mouseout', function() {
+      fruitBloop.play();
+        if (fruitBloop.paused) {
+          fruitBloop.play();
+        }else{
+          fruitBloop.currentTime = 0
+        }
+      item.element.classList.remove('highlight');
+      menuPopup.style.display = "none"
+    });
+  });
+    
+    let fly = document.getElementById("fly");
+    const body = document.getElementById("body");
+    
+    const maxX = window.innerWidth - 50;
+    const maxY = window.innerHeight - 50;
+
+    function getRandomPosition() {
+      const x = Math.floor(Math.random() * maxX);
+      const y = Math.floor(Math.random() * maxY);
+      return { x, y };
     }
 
-    .leaflet-tooltip.polygon-label {
-  background-color: transparent;
-  border: none;
-  color: black;
-  font-weight: bold;
-  text-align: center;
-  pointer-events: none;
-  transition: opacity 0.2s ease, font-size 0.1s ease;
-  box-shadow: none;
-}
+    function animateFly() {
+      const newPosition = getRandomPosition();
+      fly.style.left = newPosition.x + "px";
+      fly.style.top = newPosition.y + "px";
+    }
 
-  </style>
-</head>
-<body>
-
-<h3>Montpelier Border Map</h3>
-<div id="map"></div>
-
-<script src="https://unpkg.com/flatgeobuf@3.21.0/dist/flatgeobuf-geojson.min.js"></script>
-<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-<script>
-  // Initialize the map centered somewhere near Montpelier, Vermont
-  var map = L.map('map').setView([44.2601, -72.5754], 13);
-
-
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
-	attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-	subdomains: 'abcd',
-}).addTo(map);
-
-  const labelZoomThreshold = 10;
-  let tooltipLayers = [];
-
-  fetch('data/vt-zoning-update.fgb')
-    .then(response => response.arrayBuffer())
-    .then(async (buffer) => {
-      const geojson = await flatgeobuf.deserialize(new Uint8Array(buffer));
-
-      const fgbLayer = L.geoJSON(geojson, {
-        style: {
-          color: 'blue',
-          weight: 2,
-          fillOpacity: 0.2
-        },
-        onEachFeature: function (feature, layer) {
-          console.log('Feature properties:', feature.properties);
-          
-          if (feature.properties?.NAME) {
-            layer.bindTooltip(feature.properties.NAME, {
-              permanent: true,
-              direction: 'center',
-              className: 'polygon-label'
-            });
-            layer.openTooltip();
-          }
+    setInterval(animateFly, 1250);
+    
+    
+    fly.addEventListener ('mouseover', function() {
+      fly.style.cursor = "grab";
+    });
+    
+    fly.addEventListener ('click', function() {
+      body.style.cursor = "url('/cursorfly1.ico'), default";
+      fruits.forEach(item => {
+        item.element.style.cursor = "url('/cursorfly1.ico'), default"
+      });
+      flyBuzz.pause();
+      slap.play();
+        if (slap.paused) {
+          slap.play();
+        }else{
+          slap.currentTime = 0
         }
-      }).addTo(map);
+      fly.style.display = 'none'
+    });
+    
+    const buzzToggle = document.getElementById("buzzToggle");
+    
+    buzzToggle.addEventListener ('click', function() {
+      if (flyBuzz.paused) {
+        flyBuzz.loop = true;
+        flyBuzz.play(); 
+      } else {
+        flyBuzz.pause(); 
+      }
+      });
+    
+    const newBug = document.getElementById("newBug");
+    
+    newBug.addEventListener ('click', function() {
 
-      map.fitBounds(fgbLayer.getBounds());
-    })
-    .catch(err => console.error('Failed to load .fgb file:', err));
-</script>
+    const newfly = document.createElement('img');
+      newfly.src = "/fly.png";
+      newfly.style = "position:fixed; top:5%; left:25%; width:4%; height:6%; transition:left 0.5s ease, top 0.5s ease;";
+      body.appendChild(newfly);
 
-</body>
+    function animateNewFly() {
+      const newPosition = getRandomPosition();
+      newfly.style.left = newPosition.x + "px";
+      newfly.style.top = newPosition.y + "px";
+    }
+
+    setInterval(animateNewFly, 1250);
+
+    newfly.addEventListener ('mouseover', function() {
+      newfly.style.cursor = "grab";
+    });
+
+    newfly.addEventListener ('click', function() {
+      body.style.cursor = "url('/cursorfly1.ico'), default";
+      fruits.forEach(item => {
+      item.element.style.cursor = "url('/cursorfly1.ico'), default"
+      });
+      flyBuzz.pause();
+      slap.play();
+        if (slap.paused) {
+          slap.play();
+        }else{
+          slap.currentTime = 0
+        }
+     newfly.style.display = 'none';
+      });
+    });
+
+    
+    
+    
+    
+  </script>
+  
+  </body>
 </html>
 
--->
+
+
