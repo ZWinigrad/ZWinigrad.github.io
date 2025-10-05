@@ -95,10 +95,7 @@ function startDrag(e) {
             // Store references on the dragged element so we can manipulate or stop later
             draggingElem.dataset.playingAudio = audioFilePath;
             draggingElem._audioNodes = { source, gainNode };
-            })
-            .catch(err => console.error("Failed to load sound for fruit:", fruitData.fruit, err));
-            }
-      
+
             // Store audio context parts in the DOM element
             const instanceId = `audio-${Date.now()}`;
             draggingElem.dataset.audioId = instanceId;
@@ -108,7 +105,13 @@ function startDrag(e) {
             draggingElem.addEventListener('click', () => {
               createPopupForFruitInstance(fruitData, draggingElem);
             });
-          });
+          })
+          .catch(err => console.error("Failed to load sound for fruit:", fruitData.fruit, err));
+      } else {
+        // If no sound, just add click listener for popup anyway (optional)
+        draggingElem.addEventListener('click', () => {
+          createPopupForFruitInstance(fruitData, draggingElem);
+        });
       }
     } else {
       draggingElem.remove();
@@ -125,7 +128,7 @@ function createPopupForFruitInstance(fruitData, fruitElement) {
   // Prevent multiple popups
   if (fruitElement.dataset.popupOpen) return;
 
-  const { source, gainNode } = fruitElement._audioData;
+  const { source, gainNode } = fruitElement._audioData || {};
   if (!source || !gainNode) return;
 
   const popup = document.createElement('div');
@@ -149,7 +152,7 @@ function createPopupForFruitInstance(fruitData, fruitElement) {
   title.innerText = `${fruitData.fruit} Controls`;
   popup.appendChild(title);
 
-  // Volume
+  // Volume Control
   const volumeLabel = document.createElement('label');
   volumeLabel.innerText = 'Volume: ';
   const volumeSlider = document.createElement('input');
@@ -165,7 +168,7 @@ function createPopupForFruitInstance(fruitData, fruitElement) {
   popup.appendChild(volumeLabel);
   popup.appendChild(document.createElement('br'));
 
-  // Pitch
+  // Pitch Control
   const pitchLabel = document.createElement('label');
   pitchLabel.innerText = 'Pitch (PlaybackRate): ';
   const pitchSlider = document.createElement('input');
@@ -181,7 +184,7 @@ function createPopupForFruitInstance(fruitData, fruitElement) {
   popup.appendChild(pitchLabel);
   popup.appendChild(document.createElement('br'));
 
-  // Close button
+  // Close Button
   const closeBtn = document.createElement('button');
   closeBtn.innerText = 'Close';
   closeBtn.addEventListener('click', () => {
