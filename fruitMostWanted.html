@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fruit Most Wanted</title>
+    <link href="/style.css" rel="stylesheet" type="text/css" media="all">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+  </head>
+  <body id="body" style="z-index:1;background-repeat:repeat;background-size:100px 100px;backgroundImage:;animation:scrollBackground 30s linear infinite;">
+    <h1><span style="background-color:rgb(255 255 255);">Welcome to my Most Wanted Fruit!</span></h1>
+    
+    <button id="tbutton" type="button"> Click here for the teir list!</button>
+    
+    <div id="tierList" class="gamePopup" style="display:none;background-color:lightgrey;">
+      <div id="tclose" style="width:75px;height:75px;background-color:white;position:fixed;top:5%;left:90%;text-align:center;display:flex;justify-content:center;align-items:center;cursor:pointer;">
+      <h1 style="position:relative;font-size:60px;font-family:arial;">X</h1>
+      </div>
+      
+      <h1>Fruit tier list</h1>
+      <h3>Seek not the senseless <br> drivel of the common folk <br>
+      My word reigns as law!</h3>
+      
+      <table style="table-layout:fixed;width:60%;border-collapse:collapse;height:80%;">
+        <tr>
+          <td style="border-bottom:solid;background-color:#44ce1b;text-align:center;"> <h1>S tier</h1> </td>
+          <td class="td"> 
+            <div class="tf">  
+              <img src="/blackberry.png" style="max-width:100px;max-height:100px;margin-bottom:-15px;"> 
+              <p style="margin-top:-5px;">Blackberry</p> 
+            </div> 
+          </td>
+          <td class="td"> 
+            <div class="tf">
+              <img src="/cherry.png" style="max-width:100px;max-height:85px;margin-bottom:-5px;">
+              <p style="margin-top:-5px;">Cherry</p>
+            </div>
+          </td>
+          <td class="td"> 
+            <div class="tf">  
+              <img src="/pear.png" style="max-width:100px;max-height:85px;margin-bottom:5px;"> 
+              <p style="margin-top:-5px;">Pear</p> 
+            </div> 
+          </td>
+          <td class="td"> 
+            <div class="tf" style="top:60%;">  
+              <img src="/banana.png" style="max-width:100px;max-height:100px;margin-bottom:5px;"> 
+              <p style="margin-top:-5px;">Banana</p> 
+            </div> 
+          </td>
+          <td class="td"> 
+            <div class="tf">  
+              <img src="/Asianpear.png" style="max-width:100px;max-height:90px;margin-bottom:5px;"> 
+              <p style="margin-top:-5px;">Asian pear</p> 
+            </div> 
+          </td>
+          <td class="td"></td>
+        </tr>
+        <tr>
+          <td style="border-bottom:solid;background-color:#bbdb44;"> <h1>A tier</h1> </td>
+          <td class="td"> 
+            <div class="tf">  
+              <img src="/plum.png" style="max-width:100px;max-height:100px;margin-bottom:-10px;"> 
+              <p style="margin-top:-5px;">Plum</p> 
+            </div> 
+          </td>
+          <td class="td"> 
+            <div class="tf">  
+              <img src="/blueberry.png" style="max-width:100px;max-height:100px;margin-bottom:-10px;"> 
+              <p style="margin-top:-5px;">Blueberry</p> 
+            </div> 
+          </td>
+          <td class="td"> 
+            <div class="tf">  
+              <img src="/pineapple.png" style="max-width:100px;max-height:100px;margin-bottom:5px;"> 
+              <p style="margin-top:-5px;">Pineapple</p> 
+            </div> 
+          </td>
+          <td class="td"> 
+            <div class="tf" style="top:55%;">  
+              <img src="/pixelMango4.png" style="max-width:75px;max-height:100px;margin-bottom:5px;"> 
+              <p style="margin-top:-5px;">Mango</p> 
+            </div> 
+          </td>
+          <td class="td"> 
+            <div class="tf" style="top:60%;">  
+              <img src="/peach.png" style="max-width:100px;max-height:100px;margin-bottom:5px;"> 
+              <p style="margin-top:-5px;">Peach</p> 
+            </div> 
+          </td>
+          <td class="td"></td>
+        </tr>
+        <tr>
+          <td style="border-bottom:solid;background-color:#f7e379;"> <h1>B tier</h1> </td>
+          <td class="td"> 
+            <div class="tf" style="top:60%;">  
+              <img src="/avocado.png" style="max-width:100px;max-height:100px;margin-bottom:5px;"> 
+              <p style="margin-top:-5px;">Avocado</p> 
+            </div> 
+          </td>
+          <td class="td"> 
+            <div class="tf">  
+              <img src="/dragonfruit1.png" style="max-width:100px;max-height:100px;margin-bottom:5px;"> 
+              <p style="margin-top:-5px;">Dragonfruit</p> 
+            </div> 
+          </td>
+          <td class="td"> 
+            <div class="tf" style="top:55%;">  
+              <img src="/kiwi.png" style="max-width:100px;max-height:100px;margin-bottom:-10px;"> 
+              <p style="margin-top:-5px;">Kiwi</p> 
+            </div> 
+          </td>
+          <td class="td"> 
+            <div class="tf">  
+              <img src="/raspberry.png" style="max-width:100px;max-height:100px;margin-bottom:5px;"> 
+              <p style="margin-top:-5px;">Raspberry</p> 
+            </div> 
+          </td>
+          <td class="td"></td>
+          <td class="td"></td>
+        </tr>
+        <tr>
+          <td style="border-bottom:solid;background-color:#f2a134;"> <h1>C tier</h1> </td>
+          <td class="td"> 
+            <div class="tf">  
+              <img src="/Cantaloupe.png" style="max-width:100px;max-height:100px;margin-bottom:-5px;"> 
+              <p style="margin-top:-5px;">Cantaloupe</p> 
+            </div> 
+          </td>
+          <td class="td"> 
+            <div class="tf">  
+              <img src="/apple.png" style="max-width:75px;max-height:75px;margin-bottom:5px;"> 
+              <p style="margin-top:-5px;">Apple</p> 
+            </div> 
+          </td>
+          <td class="td"> 
+            <div class="tf">  
+              <img src="/grapes.png" style="max-width:100px;max-height:100px;margin-bottom:5px;"> 
+              <p style="margin-top:-5px;">Grapes</p> 
+            </div> 
+          </td>
+          <td class="td"> 
+            <div class="tf" style="top:55%;">  
+              <img src="/strawberry.png" style="max-width:75px;max-height:75px;margin-bottom:5px;"> 
+              <p style="margin-top:-5px;">Strawberry</p> 
+            </div> 
+          </td>
+          <td class="td"> 
+            <div class="tf" style="top:60%;">  
+              <img src="/watermelon.png" style="max-width:100px;max-height:85px;margin-bottom:-5px;"> 
+              <p style="margin-top:-5px;">Watermelon</p> 
+            </div> 
+          </td>
+          <td class="td"></td>
+        </tr>
+        <tr>
+          <td style="border-bottom:solid;background-color:#e51f1f;"> <h1>D tier</h1> </td>
+          <td class="td"> 
+            <div class="tf">  
+              <img src="/grapefruit.png" style="max-width:100px;max-height:100px;margin-bottom:5px;"> 
+              <p style="margin-top:-5px;">Grapefruit</p> 
+            </div> 
+          </td>
+          <td class="td" style="top:55%;"> 
+            <div class="tf">  
+              <img src="/pixelOrange4.png" style="max-width:75px;max-height:100px;margin-bottom:5px;"> 
+              <p style="margin-top:-5px;">Orange</p> 
+            </div> 
+          </td>
+          <td class="td" style="top:55%;"> 
+            <div class="tf">  
+              <img src="/Honeydew.png" style="max-width:75px;max-height:100px;margin-bottom:5px;"> 
+              <p style="margin-top:-5px;">Honeydew</p> 
+            </div> 
+          </td>
+          <td class="td"> 
+            <div class="tf" style="top:55%;">  
+              <img src="/pixelpom.png" style="max-width:75px;max-height:100px;margin-bottom:5px;"> 
+              <p style="margin-top:-5px;">Pomegranate</p> 
+            </div> 
+          </td>
+          <td class="td"></td>
+          <td class="td"></td>
+        </tr>
+      </table>
+      
+    </div>
+    
+    <form id="form">
+      <tr>
+        <td>
+          <label>Fruit Select:</label>
+        </td>
+      <td>
+        <select id="fruitSelect">        
+        </select>
+        </td>
+      </tr>
+      <input type="submit" >
+    </form>
+    
+    <h1> <span id="fruitName" style="background-color:rgb(255 255 255);">Select Fruit </span></h1>
+    
+    <h3> <span style="background-color:#ffffff;"> Yum rating: </span> </h3> 
+    
+    <h4><span id="yumRating" style="background-color:#ffffff;"> </span></h4>
+    
+    <img src="" id="fruitImg" style="display:none;position:absolute;max-width:250px;max-height:250px;left:50%;top:15%;background-color:#eee7d7; border: 4mm ridge black;padding:20px;">
+
+    <div>
+    
+    <div id="PearText" style="display:none;background-color:rgb(255 255 255); border: 4mm ridge black;width:1000px;margin:auto;">
+    <h3 style="text-indent:5px;">My take:</h3>
+    <ul>
+      <li>Flavour <b>8/10</b></li>
+      <li>Texture <b>10/10</b></li>
+      <li>Emotional Aspect <b>10/10</b></li>
+    </ul>
+
+      <h4 style="text-indent:5px;">Flavour:</h4>
+      <p style="margin-left:30px;margin-right:5px;">Pears do not have a strong flavour, but I find them mildly sweet. It's subtle and I can respect that. Many fruits don't respect you enough to let you do the work, instead the fruit flavor blasts you and I find that to be a bit rude.</p>
+      <h4 style="text-indent:5px;">Texture:</h4>
+      <p style="margin-left:30px;margin-right:5px;">An unripe pear is a very different experience than a ripe pear. I DO NOT like ripe/overripe pears, they are mushy, so for the sake of this analysis I am running with the assumption of eating the fruit at its finest. With that said, an unripe pear is very tasty, the texture is very crunchy which like the flavour is a bit rare. The thick skin also plays into the texture feeling, and they comine to create a texture that is very satisfying. The best apple wishes it had the texture of an unripe pear.</p>
+      <h4 style="text-indent:5px;">Emotional Aspect:</h4>
+      <p style="margin-left:30px;margin-right:5px;">I find that when I eat a pear, I feel like a monkey. This is due to the texture I preivously mentioned. I feel as though I am eating a potato if eating a potato wasn't a horrible experience. Somehow my ancestors have given me this gift of primal unexplainable satifaction from eating a starchy fruit. I will cherish this gift for time immemorial.</p>
+    
+    </div>
+    
+    <div id="PomegranateText" style="display:none;background-color:rgb(255 255 255); border: 4mm ridge black;width:1000px;margin:auto;">
+    <h3 style="text-indent:5px;">My take:</h3>
+    <ul>
+      <li>Flavour <b>0/10</b></li>
+      <li>Texture <b>3/10</b></li>
+      <li>Emotional Aspect <b>0/10</b></li>
+    </ul>
+
+      <h4 style="text-indent:5px;">Flavour:</h4>
+      <p style="margin-left:30px;margin-right:5px;">Pomegranates are designed by nature to deter me. Pomegranates are meant for <a href="https://botanistinthekitchen.blog/2013/02/04/pomegranates-and-the-art-of-herbivore-attraction/">ants</a>. I am not the biggest fan of tart flavors, and while I can appreciate the sweetness I inevitably end up eating a large amount of pith (the bitter white part). I can understand how some people (freaks) enjoy the flavour of pomegranate, but I am not among their ranks.</p>
+      <h4 style="text-indent:5px;">Texture:</h4>
+      <p style="margin-left:30px;margin-right:5px;">I wish I enjoyed the flavour of pomegranates because I really like the concept of making fruit consumption a game, something that merits skill. If the seeds were sweeter I think the idea of eating small packets of flavour would be really cool.</p>
+      <h4 style="text-indent:5px;">Emotional Aspect:</h4>
+      <p style="margin-left:30px;margin-right:5px;">When I eat pomegranate I feel as though I have been played the fool. I have purchased an item with the promise of a sweet treat. Instead I am met with bitter pith and an insurmountable wall of tartness. I will not buy another pomegranate. I will not buy another pomegranate. I will not...</p>
+    
+    </div>
+    
+    <div id="PineappleText" style="display:none;background-color:rgb(255 255 255); border: 4mm ridge black;width:1000px;margin:auto;">
+    <h3 style="text-indent:5px;">My take:</h3>
+    <ul>
+      <li>Flavour <b>7/10</b></li>
+      <li>Texture <b>7/10</b></li>
+      <li>Emotional Aspect <b>3/10</b></li>
+    </ul>
+
+      <h4 style="text-indent:5px;">Flavour:</h4>
+      <p style="margin-left:30px;margin-right:5px;">Pineapples are very interesting to me, namely because they put up for of a fight than most fruits. Namely, pinapples have a lot of enzymes and citric acid which gives them their distinctive sweet and lip pucking flavour. I am not the biggest fan of sour tasting foods but I can make an exception for pineapple. Pineapple is in fact so powerful that it can alter the flavour of other foods like <a href="https://www.harryanddavid.com/articles/food-drink/pineapple-facts?srsltid=AfmBOop-Rc_oPPXUTrXmvC643xN3riUARlbFAO9jrj4WZ0PaeQvuXEZK">dairy</a>. I don't like dairy either so extra points for pineapple. Anyways, it's tasty and cool. Not the best but it's up there.</p>
+      <h4 style="text-indent:5px;">Texture:</h4>
+      <p style="margin-left:30px;margin-right:5px;">Pineapple shines the most in the texture department. Spongey yet firm. It melts in your mouth but packs a powerful punch. I think more fruit should strive to be like pineapple. One of the better "soft texture" fruits. I generally prefer something with a bit more crunch but I can appreciate game when I see it.</p>
+      <h4 style="text-indent:5px;">Emotional Aspect:</h4>
+      <p style="margin-left:30px;margin-right:5px;">Pineapple is a guilty pleasure, a forbidden lover who I must cast away lest I am hurt. I have weak tooth enamel, which is to say that pouring acidic pineapple juice onto them is generally not good for them. I do enjoy pineapple but for the sake of my teeth I tend to avoid it. I envy those who can eat freely, consuming pineapple with wanton abandon...</p>
+    
+    </div>
+    
+    <div id="AppleText" style="display:none;background-color:rgb(255 255 255); border: 4mm ridge black;width:1000px;margin:auto;">
+    <h3 style="text-indent:5px;">My take:</h3>
+    <ul>
+      <li>Flavour <b>4/10</b></li>
+      <li>Texture <b>8/10</b></li>
+      <li>Emotional Aspect <b>5/10</b></li>
+    </ul>
+
+      <h4 style="text-indent:5px;">Flavour:</h4>
+      <p style="margin-left:30px;margin-right:5px;">Apples are surprizingly bland. This is perhaps a hot take but I will die on this hill. Apple cider is so tasty, one of my favorite drinks (cold apple cider is better than hot I will also die on this hill). But how many apples do you need to concentrate to get a flavour that strong? <a href="https://www.juliancidermill.com/post/how-many-apples#:~:text=Here%20are%20three%20of%20the,Many%20Apples%20in%20a%20Pound?&text=How%20Many%20Apples%20in%20a%20Peck?&text=How%20Many%20Apples%20in%20a%20Bushel?&text=How%20many%20apples%20does%20it,are%20there%20in%20the%20World?&text=How%20many%20varieties%20of%20apples%20are%20grown%20commercially%20in%20United,grown%20commercially%20in%2036%20states.">40</a> apples makes a gallon of apple cider. By volume that's about a 3:1 fruit to cider volume ratio. I think that really says something when you compare this to other fruits like lemons, or even less flavoured fruits like blueberries that do not need to be concentrated.</p>
+      <h4 style="text-indent:5px;">Texture:</h4>
+      <p style="margin-left:30px;margin-right:5px;">An apple at its best has a really nice texture. The skin is thin and breaks easily, and the flesh is firm and crunchy. Should these conditions not be met, and apple is a horrid thing to me. Let me be clear, I am not a picky eater. Apples are the exception to the rule for me. Something about mealy apples, or apple skin that doesn't easily break just really puts me off.</p>
+      <h4 style="text-indent:5px;">Emotional Aspect:</h4>
+      <p style="margin-left:30px;margin-right:5px;">Apples are a gamble. Apples are also rapdily changing. When I was growing up, Honeycrisp was the big kahuna. If you wanted to pay extra money for an apple you bought Honeycrisp. And they were (and still are) very good. Crisp and juicy! BUT this is no longer the case. If you go to the store to buy an apple and you want to pay more, you buy a Cosmic Crisp. And I'll admit Cosmic Crisp apples also also quite tasty. With that said, I do not think there is a major difference between the two. This is of course due to changes in fruit varieties as more growers get involved with genetic splicing and selective breeding. I have no preference between the two but I am not willing to buy an apple I know COULD be mealy. Thus, I am happy as now my beloved Honey Crisps are less expensive. All of this is to say that I can enjoy apples but only if they are crispy!</p>
+    
+    </div>
+    
+    <div id="BananaText" style="display:none;background-color:rgb(255 255 255); border: 4mm ridge black;width:1000px;margin:auto;">
+    <h3 style="text-indent:5px;">My take:</h3>
+    <ul>
+      <li>Flavour <b>9/10</b></li>
+      <li>Texture <b>9/10</b></li>
+      <li>Emotional Aspect <b>9/10</b></li>
+    </ul>
+
+      <h4 style="text-indent:5px;">Flavour:</h4>
+      <p style="margin-left:30px;margin-right:5px;">Bananas are a classic candy flavour and for good reason. Bananas are sweet yet creamy. Fluffy yet sticky. Yellow yet brown. I wrote previously that I am usually not a fan of "soft" fruits but I love bananas. I am bananas for bananas. They taste great and I simply have nothing else to say about them.</p>
+      <h4 style="text-indent:5px;">Texture:</h4>
+      <p style="margin-left:30px;margin-right:5px;">Banana texture can be controversal, but anytime I take the risk and eat a banana I am not sure about, I am caught in a safety net of banana-goodness. A banana at its finest is firm enough to not turn instantly into mush but also melt in your mouth. I do not like to think about the noises my mouth makes when I eat a banana, but the texture that produces those sounds is good.</p>
+      <h4 style="text-indent:5px;">Emotional Aspect:</h4>
+      <p style="margin-left:30px;margin-right:5px;">My heart swells with a bittersweet joy whenever I eat a banana, especially a good one. Bananas are really messed up genetically, which means that any decade (year???) now bananas could be wiped off the face of the earth. FOREVER. How lucky am I to have this experience of eating such a delicious fruit and yet how heartbreaking is it to know that this fruit might not exist in the next few years. I alone live in this moment with the capacity to eat and enjoy this banana, but will my children get this opportunity? Will I in 5 years? Any banana could be my last, and that knowledge is both eye-opening and terrifying.</p>
+    
+    </div>
+
+    <div id="Asian PearText" style="display:none;background-color:rgb(255 255 255); border: 4mm ridge black;width:1000px;margin:auto;">
+    <h3 style="text-indent:5px;">My take:</h3>
+    <ul>
+      <li>Flavour <b>10/10</b></li>
+      <li>Texture <b>9/10</b></li>
+      <li>Emotional Aspect <b>10/10</b></li>
+    </ul>
+
+      <h4 style="text-indent:5px;">Flavour:</h4>
+      <p style="margin-left:30px;margin-right:5px;"> I am a huge pear lover. With that said, I fully acknowledge that western pears are not very flavorful. And this is ok, there's nothing wrong with being a bit bland. Asian pears are different. Asian pears said, "I'm going to be something more, and no one can stop me". And they did just that. Others describe them as "floral" but that feels somewhat silly as the whole thing comes from a flower. The taste of asian pears is to me what scents are to yankee candles. You can't quite describe what "First Down" smells like, but you get a general idea, and once you smell it you'd know it.</p>
+        <img style="max-width:300px;" src="https://imgix.ranker.com/user_node_img/50041/1000802327/original/yeah-sports-photo-u1?auto=format&q=60&fit=crop&fm=pjpg&dpr=2&w=500">
+      <h4 style="text-indent:5px;">Texture:</h4>
+      <p style="margin-left:30px;margin-right:5px;"> Asian pears are pretty much the same texture as western pears, but with one extremely minor drawback: the shape. I love holding a pear in one hand and hacking pieces off with my teeth. It's cathardic, I am a wild boar eating tubers in the woods. It's nice and round where your palm is, but the length is just so that it your fingers can wrap around. Asian pears are very wide and squat, kinda like if you scaled up an apple. Because of this, one-handing an asian pear doesn't really feel the same, the shape really lends it self to being eaten as wedges. Two-handing any fruit makes me feel like a sickly child too weak to hold a meal, so that's also out of the picture. It's just an uncomfortable experience for about 4 bites, and it bothers me ever so.</p>
+      <h4 style="text-indent:5px;">Emotional Aspect:</h4>
+      <p style="margin-left:30px;margin-right:5px;">Obtaining an asian pear is a side quest (at least for me in the US). If I wanted to get an asian pear, I would need to go to an asian super market like H-mart, which if you've never been to such a place, let me just say it's an experience (imagine the busiest highway you've been to but it's mario kart, 150cc and you're toad). That aside, once in the asian super market, I would need need to: <br>
+        1: Find the asian pears in the (usually) massive fruit section <br>
+        2: Find a reasonably priced asian pear since this is not a guarentee <br>
+        3: Make it out alive <br>
+        Should I succeed in this quest, I am rewarded with a treasure unlike any other. Todays day and age makes it very easy to get lazy, and have convenience take over your life. I firmly believe that going out of your way to do something, even if it's just for yourself, is a worthy cause. If I currently lived in an area where asian pears were available, I would make this voyage more often.
+        </p>
+    
+    </div>
+
+    <div id="HoneydewText" style="display:none;background-color:rgb(255 255 255); border: 4mm ridge black;width:1000px;margin:auto;">
+    <h3 style="text-indent:5px;">My take:</h3>
+    <ul>
+      <li>Flavour <b>3/10</b></li>
+      <li>Texture <b>7/10</b></li>
+      <li>Emotional Aspect <b>1/10</b></li>
+    </ul>
+
+      <h4 style="text-indent:5px;">Flavour:</h4>
+      <p style="margin-left:30px;margin-right:5px;">Bleh! It's soooooo bland. It is sweet (could be sweeter), but unlike watermelon and cantaloupe, honeydew simply doesn't have it's own special pazazz. There is no chemical in the fruit that makes me go "holy shit that's honeydew!", and to me that's pretty telling. Honeydew just lacks that special something that makes a fruit have a lasting impact.</p>
+      <h4 style="text-indent:5px;">Texture:</h4>
+      <p style="margin-left:30px;margin-right:5px;">The texture of honeydew is like cantaloupe but a bit starchier. I don't think that it's necessarily better or worse than cantaloupe texture, both have their moments. On the one hand cantaloupe gets the softer, sweeter moments and those are quite pleasent. Meanwhile honeydew is consistent and always gives you a good bite. Nothing to complain about in the texture department, but also not really worth writing home about either.</p>
+      <h4 style="text-indent:5px;">Emotional Aspect:</h4>
+      <p style="margin-left:30px;margin-right:5px;">I am not emotionally invested in honeydew. At best, honeydew is a fruit salad fruit, comporable to cantaloupe. The thing is that cantaloupe has like a real flavour, and honeydew is like La Croix, but not even in like watermelon kind of way, it just lacks any direction. To me honeydew taste like someone selectively bred other melons for the rind to be edible. I am so sorry to anyone whose culture spent generations of melons to make these things, I really am. They aren't unpalatable, and I hold deep respect for the effort it took to get there but man, I just don't like the taste. Fun Fact: honeydew are  <a href="https://www.kidsfruit.org/get-learning/h-is-for/">90% water</a> which is why they are so bland probably. It makes sense though right?</p>
+    
+    </div>
+
+    <div id="BlackberryText" style="display:none;background-color:rgb(255 255 255); border: 4mm ridge black;width:1000px;margin:auto;">
+    <h3 style="text-indent:5px;">My take:</h3>
+    <ul>
+      <li>Flavour <b>10/10</b></li>
+      <li>Texture <b>8/10</b></li>
+      <li>Emotional Aspect <b>6/10</b></li>
+    </ul>
+
+      <h4 style="text-indent:5px;">Flavour:</h4>
+      <p style="margin-left:30px;margin-right:5px;">Amazing flavour profile. I've said before that I don't really like tart fruits, but I think I make the exception for blackberries. You might be saying that blackberries aren't really tart and you'd be right. I think the very little amount of tartness compliments the sweetness really well in a way that other berries just don't really accomplish. </p>
+      <h4 style="text-indent:5px;">Texture:</h4>
+      <p style="margin-left:30px;margin-right:5px;">A nice plump, juicy blackberry is so good. Even when a blackberry gets a tad mushy, it can still hold it's ground which is saying a lot, as many fruits become either unpalatable or give me the "oh god no this is too ripe" reaction. I really only took off a few points because I don't know how to feel about the seeds. On one hand, I don't dislike the seeds. They bring a new texture when you finish the berry, and can be a nice change of pace as you eat many berries in a row. On the other hand, these seeds can be super astringent and bitter/sour, so if you chew up a big seed, you need to either drink water or eat another berry. I don't think the seeds detract or add to teh texture experience, but I just can't give it a higher score when I'm so indecisive about it.</p>
+      <h4 style="text-indent:5px;">Emotional Aspect:</h4>
+      <p style="margin-left:30px;margin-right:5px;">When I was just a wee lad I went berry picking with my family. It was a wonderful day eating raspberries, black raspberries, golden raspberries, blueberries, strawberries and blackberries. Except I had never had a blackberry before, so my mom decided to play a funny joke on me. Right when I had put my very first blackberry into my mouth, my mom screamed "Wait they're poisonous!". This of course is now the first thing I think about when I eat blackberries, my gullability, my mother's betrayal of my trust, and my life flashing before my eyes. Any berry could be your last, better make it count...</p>
+    
+    </div>
+    
+    <div id="CherryText" style="display:none;background-color:rgb(255 255 255); border: 4mm ridge black;width:1000px;margin:auto;">
+    <h3 style="text-indent:5px;">My take:</h3>
+    <ul>
+      <li>Flavour <b>8/10</b></li>
+      <li>Texture <b>10/10</b></li>
+      <li>Emotional Aspect <b>9/10</b></li>
+    </ul>
+
+      <h4 style="text-indent:5px;">Flavour:</h4>
+      <p style="margin-left:30px;margin-right:5px;">I'm not a sour cherry lover, honestly I'm not a huge sour flavour lover in general but that's besides the point. I relly like the taste of sweet cherries, there's something so rich and smoothe about the flavour after the inital sweetness that I don't really see in other fruits. I believe that there is a reason that coke cherry was invented in 1985 while coke peach or whatever they make nowadays is new.</p>
+      <img style="max-width:600px;margin:auto;display:block;" src="/coke.jpg">
+      <p style="margin-left:30px;margin-right:5px;">I absolutely dispise soda, especially coke because it's just garbage for your health. But oh man, I just love a cherry coke (I haven't had one in years and my nostalgia has reached a critical mass that I will never act upon).</p>
+      <h4 style="text-indent:5px;">Texture:</h4>
+      <p style="margin-left:30px;margin-right:5px;">Stone fruit can be kind of hit or miss with texture, and perhaps this is a hot take, but I think the flesh to skin ratio on a cherry is the best flesh to skin ratio on any stone fruit. I don't appreciate fruits that just explode in juice, like I don't want to have to take a shower all I did was eat a fruit! That plus the nice combo of crisp from the skin and the softness of the flesh just makes for a very pleasent experience. I love cherries so goddamn much.</p>
+      <h4 style="text-indent:5px;">Emotional Aspect:</h4>
+      <p style="margin-left:30px;margin-right:5px;">WHY ARE THEY SO EXPENSIVE!?! I think their expensiveness plays into their commodification to me, and so when I do decide to get cherries it becomes more of a thing. Unlike other more (relatively) cheap fruit, cherries are just always a bit more than I realistically want to spend, so I find myself biting by tongue often. Cherries are a fleeting summertime treat, and boy do I wish I could have more of them. I will make a note to myself here that I want to try Nantin/Nanking cherries which are kind of different. Nantin cherries are bush cherries which are not the same as tree cherries that you buy at the grocery store. Nantin cherries are native to eastern Asia (China, Japan, etc.) and are extremely prolific berry producers. One day I hope to grow some for myself and I'll update this accordingly.</p>
+    
+    </div>
+
+    <div id="PlumText" style="display:none;background-color:rgb(255 255 255); border: 4mm ridge black;width:1000px;margin:auto;">
+    <h3 style="text-indent:5px;">My take:</h3>
+    <ul>
+      <li>Flavour <b>8/10</b></li>
+      <li>Texture <b>10/10</b></li>
+      <li>Emotional Aspect <b>9/10</b></li>
+    </ul>
+
+      <h4 style="text-indent:5px;">Flavour:</h4>
+      <p style="margin-left:30px;margin-right:5px;">Plums are pretty solid, especially as a stone fruit with a lot of competition. While I really love peaches, plums are a bit less overwhelmingly sweet which I can get behind, while not being tart like cherries. I think plums do a really nice job of balancing sweetness with it's own floral thing it has going on, but the one thing I don't love is how dry they can be. And this is not to say that they are always dry, some plums are literally bursting with juice. This is more to say that if I were to say eat like 30 plums back to back I would need quite a bit of water, which I probably wouldn't need as much with an equal amount of fruit for peaches/cherries. I think maybe my point with this is that some plums can be a bit astringent and thus dry? I'm not sure. They taste good!</p>
+      <h4 style="text-indent:5px;">Texture:</h4>
+      <p style="margin-left:30px;margin-right:5px;">I must admit that I haven't had a round plum, or at least I don't have a distinct enough memory of eating a round plum to speak on. Instead I am basing my entire experience off one really good experience with what I believe were Italian plums from upstate NY. My girlfriend has some family in the finger lakes region of NY, and on one of the family farms, there is a massive (20+ ft) plum hedge? Bush? It is shaped more like a hedge than a tree, but the important part is that it was planted by my girlfriend's great grandfather. And the fruits from this plum plant were oval shaped with dark purple skin, and yellow flesh. Based on the time period, I don't think asian fruit trees could have gotten to central NY, but who knows! To bring this back to texture, we could not reach most of the plums in the tree, so we had to stand in a tractor's bucket to reach. So, we ate plums in the midst of all the bramble, and I felt like a monkey! The oval shape and the slightly dry but sweet nature of the plum just made for a really unforgettable experience. The crisp of each bite of plum combined with the maneuvering to spit out the seed was very pleasent. Plums rule.</p>
+      <h4 style="text-indent:5px;">Emotional Aspect:</h4>
+      <p style="margin-left:30px;margin-right:5px;">So I kinda spent my story on the texture section, but I will say that as of writing this, that happened less than a year ago. I don't think I've ever been so nostalgic for something that happened so recently, and the really cool part is that I will have the chance to go back! So, the plums I had in upstate NY sorta represent a sweet future to me. One with many more summers in a beautiful rural landscape with rolling hills and massive plum trees! I should probably start planting a few more...</p>
+      <img style="max-width:600px;margin:auto;display:block;" src="/upstateny.jpg">
+      <p style="margin-left:30px;margin-right:5px;">The future is plums!</p>
+      
+    
+    </div>
+
+    <div id="BlueberryText" style="display:none;background-color:rgb(255 255 255); border: 4mm ridge black;width:1000px;margin:auto;">
+    <h3 style="text-indent:5px;">My take:</h3>
+    <ul>
+      <li>Flavour <b>7/10</b></li>
+      <li>Texture <b>7/10</b></li>
+      <li>Emotional Aspect <b>10/10</b></li>
+    </ul>
+
+      <h4 style="text-indent:5px;">Flavour:</h4>
+      <p style="margin-left:30px;margin-right:5px;">I have been a bit spoiled with blueberries, because I spent a summer internship in a forestry Non-profit that also had a blueberry patch (pick your own blueberries type deal). Here's the thing: as an employee I was basically given free range to pick and eat as many as I wanted. Naturally, I ended up eating a lot of really awesome blueberries. And while I do really like blueberries, I did notice that even the best ones would leave my mouth a bit dry, and as a personal preference I'm not in love with acidic fruit. So, I love the blueberry taste and sweetness but I don't love the acidity and the dryness. The "bad" definitely outweigh the good, and despite my standards I will still enjoy a grocery store carton of blueberries (if they weren't too expensive!)</p>
+      <h4 style="text-indent:5px;">Texture:</h4>
+      <p style="margin-left:30px;margin-right:5px;">Blueberries are similar to grapes in that they can quite often have an overripe/I'm sick just looking at it thing, especially since they tend to come in large quantities, but as said with other fruits, we're going based on the best experience. Blueberries at their best are really solid texture-wise. It's got a nice firmness that kinda explodes when you bite down, and the insides aren't super astringent or goopy. I wouldn't say that blueberries are like the be all end all for texture, but I'm definitely not complaining. There is an alternate universe where blueberries have a texture closer to tomatos and I'm glad we live in the better of the two timelines.</p>
+      <h4 style="text-indent:5px;">Emotional Aspect:</h4>
+      <p style="margin-left:30px;margin-right:5px;">Thinking back to that summer where I ate just a ridiculous amount of blueberries, I am a bit sad that I probably won't ever have that many blueberries at my disposal ever. But! I can take solace knowing that I can always come back to visit <a href="https://www.smokeyhouse.org/home">Smokey House Center</a>!</p>
+    
+    </div>
+
+    <div id="PeachText" style="display:none;background-color:rgb(255 255 255); border: 4mm ridge black;width:1000px;margin:auto;">
+    <h3 style="text-indent:5px;">My take:</h3>
+    <ul>
+      <li>Flavour <b>10/10</b></li>
+      <li>Texture <b>7/10</b></li>
+      <li>Emotional Aspect <b>8/10</b></li>
+    </ul>
+
+      <h4 style="text-indent:5px;">Flavour:</h4>
+      <p style="margin-left:30px;margin-right:5px;">Peach is one of these flavors that just never stops being awesome. It's not muttled out by acidity, or overshadowed by the texture. Sweet. Floral. Delicious. More things should be peach flavored, forget literally everything else.</p>
+      <h4 style="text-indent:5px;">Texture:</h4>
+      <p style="margin-left:30px;margin-right:5px;">There are 2 things here that take off a few points. I really like a fruit with some bite, so peaches are like 80% there and then kinda just mush right at the end which is a bit dissapointing. The other aspect of peach texture I do not like is the fuzz, especially when they are canned (I know this is about fresh fruit but I MAKE THE RULES). I do like the size and shape of peaches, unlike asian pears, I think it pulls off the sphere shape well since it fits nicely in your hand. I feel like I should really like nectarines but I think they're less sweet or just have less peach flavor chemical in them. The texture of nectarines is amazing though. </p>
+      <h4 style="text-indent:5px;">Emotional Aspect:</h4>
+      <p style="margin-left:30px;margin-right:5px;">I didn't really grow up with peaches, so I feel like my connection is a bit stunted there. I have however canned peaches which is a really long process. It's very satisfying and canned peaches are unparalleled in the dead of winter. There's a world where I studied food preservation instead of environmental science.</p>
+    
+    </div>
+
+    <div id="AvocadoText" style="display:none;background-color:rgb(255 255 255); border: 4mm ridge black;width:1000px;margin:auto;">
+    <h3 style="text-indent:5px;">My take:</h3>
+    <ul>
+      <li>Flavour <b>7/10</b></li>
+      <li>Texture <b>7/10</b></li>
+      <li>Emotional Aspect <b>4/10</b></li>
+    </ul>
+
+      <h4 style="text-indent:5px;">Flavour:</h4>
+      <p style="margin-left:30px;margin-right:5px;">Avocados are a savory fruit, which is unique and interesting! The flavour is mild, somewhat nutty/earthy, honestly avocado as a flavour doesn't really stand out on its own but does really well with other things, especially when the other things are starchy (bread/toast, rice, chips, etc.). To me, avocados are a nice flavour but I am never thinking "wow, I just loved the avocado here" it tends to be more a supporting role that comes together into something amazing</p>
+      <img style="max-width:600px;margin:auto;display:block;" src="/gingersushi.jpg">
+      <p style="margin-left:30px;margin-right:5px;">This is a shrimp tempura roll from Ginger Sushi, a sushi place I used to go to a lot when I was a kid. This was my favorite roll, it had so many awesome flavours and textures, and while you can definitely pick out the avocado, its not playing a major role.</p>
+      <h4 style="text-indent:5px;">Texture:</h4>
+      <p style="margin-left:30px;margin-right:5px;">Avocado is so fucking versitile. Imagine being the first sushi chef to try and use avocado. I bet all the other chefs were laughing at this guy, but it works so freaking well. I'm getting a bit pidgeon holed here with sushi, but avocado works for breakfast (on toast and breakfast sandwhiches), for lunch (sandwhichs and dips), and dinner (many latin american foods + sushi and rice bowls). </p>
+      <h4 style="text-indent:5px;">Emotional Aspect:</h4>
+      <p style="margin-left:30px;margin-right:5px;">I am almost completely neutral to avocado. I dont even have anything against avocado, I enjoy the flavour, I enjoy the texture, but I just have such a hard time seeing myself eating/cooking avocado for some reason. I think this is because most of the time avocado plays a supporting role, so unlike some of the other fruits that you eat just by itself I can't really view it in that light. It almost feels like putting tomato on this list. Like would I enjoy it by itself? Probably. But would it be better by itself? Absolutely not.</p>
+    
+    </div>
+
+    <div id="DragonfruitText" style="display:none;background-color:rgb(255 255 255); border: 4mm ridge black;width:1000px;margin:auto;">
+    <h3 style="text-indent:5px;">My take:</h3>
+    <ul>
+      <li>Flavour <b>/10</b></li>
+      <li>Texture <b>/10</b></li>
+      <li>Emotional Aspect <b>/10</b></li>
+    </ul>
+
+      <h4 style="text-indent:5px;">Flavour:</h4>
+      <p style="margin-left:30px;margin-right:5px;"></p>
+      <h4 style="text-indent:5px;">Texture:</h4>
+      <p style="margin-left:30px;margin-right:5px;"></p>
+      <h4 style="text-indent:5px;">Emotional Aspect:</h4>
+      <p style="margin-left:30px;margin-right:5px;"></p>
+    
+    </div>
+
+    <div id="KiwiText" style="display:none;background-color:rgb(255 255 255); border: 4mm ridge black;width:1000px;margin:auto;">
+    <h3 style="text-indent:5px;">My take:</h3>
+    <ul>
+      <li>Flavour <b>7/10</b></li>
+      <li>Texture <b>5/10</b></li>
+      <li>Emotional Aspect <b>10/10</b></li>
+    </ul>
+
+      <h4 style="text-indent:5px;">Flavour:</h4>
+      <p style="margin-left:30px;margin-right:5px;">Really solid showing here. Sweet, bordering on too sweet, balanced with a tad more acidity than I would prefer but not an unacceptable amount. Kiwi shouldn't work for me but it does. I can't say it's like my favorite fruit but it does a damn good job, and when they're aound I <u>will</u> eat multiple.</p>
+      <h4 style="text-indent:5px;">Texture:</h4>
+      <p style="margin-left:30px;margin-right:5px;">The texture of kiwi flesh is nothing special, but to actually get to it you'll need to really work for it. Unlike dragonfruit (which is already a pain in the ass), kiwi has very thin skin, so the more you scrap with your spoon the more likely you are to break the skin. It's just annoying. You could alternatively eat the flesh directly off the skin but this is messy, and requires being willing to look insane. It's quite the conundrum...</p>
+      <h4 style="text-indent:5px;">Emotional Aspect:</h4>
+      <p style="margin-left:30px;margin-right:5px;">There are people who will eat an orange in the shower because they can eat it like an apple and not have to worry about all the juice getting everywhere. I am not one of these people, BUT I do understand the appeal of eating a fruit by hand. Kiwi is one of those fruits. What I do is cut it in half and then scrape the flesh off the hairy skin with my teeth. 100% this is someone's worst sensory nightmare but I find that the slight unpleasantness of the skin texture combined with the sweetness of the fruit make for a more visceral experience. I know I didn't forage for this kiwi, but somehow I feel more primal by using the tools my mama gave me. <br>
+        I will also note that I really want to try Kiwiberry which isn't a kiwi but basically a grape-sized kiwi with no fuzzy skin. Seems like the perfect fruit...
+      </p>
+    
+    </div>
+    
+    <div id="RaspberryText" style="display:none;background-color:rgb(255 255 255); border: 4mm ridge black;width:1000px;margin:auto;">
+    <h3 style="text-indent:5px;">My take:</h3>
+    <ul>
+      <li>Flavour <b>4/10</b></li>
+      <li>Texture <b>6/10</b></li>
+      <li>Emotional Aspect <b>9/10</b></li>
+    </ul>
+
+      <h4 style="text-indent:5px;">Flavour:</h4>
+      <p style="margin-left:30px;margin-right:5px;">Raspberry flavour is always dissapointing, and like yes there are certainly better kinds of raspberry (black raspberry and golden raspberry) but I don't think it's a fair comparision because to me that's like a different thing. Maybe that's an unfair line to draw but drawn it has been. Anyways, raspberries at their best are mildly flavoured in such a way that I just don't really enjoy. When they are a bit more concentrated in a jam or something, they become amazing, but as a fruit they're bland.</p>
+      <h4 style="text-indent:5px;">Texture:</h4>
+      <p style="margin-left:30px;margin-right:5px;">Raspberries are like if blackberries deflated a little. I do enjoy a nice firm raspberry, but even when they're super ripe and sweet, the spheres? (<a href="https://www.britannica.com/science/druplet">drupelets</a>) aren't little flavour packets that burst, they kinda just ploop around and turn to mush. It's definitely not easy to live up to other druplet berries like blackberries but at the same time I can't help but be a little dissapointed.</p>
+      <h4 style="text-indent:5px;">Emotional Aspect:</h4>
+      <p style="margin-left:30px;margin-right:5px;">Despite not really liking raspberries all the much I have this deep nostalgia for them, and not even for raspberry flavoured things. I don't really fuck with raspberry on cakes unless it's like whole fruit. But man when I shovel handfuls of raspberries into my mouth I just feel like a little kid again. Despite being a pretty mid fruit, raspberries still manage to hold a special place in my decrepite, shriveled heart.</p>
+    
+    </div>
+    
+    <div id="CantaloupeText" style="display:none;background-color:rgb(255 255 255); border: 4mm ridge black;width:1000px;margin:auto;">
+    <h3 style="text-indent:5px;">My take:</h3>
+    <ul>
+      <li>Flavour <b>7/10</b></li>
+      <li>Texture <b>5/10</b></li>
+      <li>Emotional Aspect <b>6/10</b></li>
+    </ul>
+
+      <h4 style="text-indent:5px;">Flavour:</h4>
+      <p style="margin-left:30px;margin-right:5px;">I quite enjoy the flavour of a ripe cantaloupe, not enough to seek it out, but if the opportunity presented itself I wouldn't turn it down. It has a mellow sweetness with floral hints, very muted and subtle but I don't think that's a bad thing. Many fruits are so overwhelming either in texture (dryness, acidity, etc.) or in flavor and I really like that cantaloupe is mild. It deserves it's spot in every fruit cup it ends up in.</p>
+      <h4 style="text-indent:5px;">Texture:</h4>
+      <p style="margin-left:30px;margin-right:5px;">Cantaloupes are so hit or miss. I think this is kinda like watermelon where the center of the melon is different from the edges except that the center of cantaloupe is more gooey while the edges are more crispy. Unlike watermelon I don't really love one of these textures more than the other. The gooey inner texture is not the most pleasent. It's kinda slimey but its sweeter, meanwhile the other texture is so much blander but also crispy. I think if these two could be combined it would be happiest. The funny thing is that might exist but I wouldn't know because I don't seek it out.</p>
+      <h4 style="text-indent:5px;">Emotional Aspect:</h4>
+      <p style="margin-left:30px;margin-right:5px;">Like I said before I don't really seek out cantaloupe, rather it tends to find its way to me. Usually this is in the form of a breakfest buffet, or a fruit cup/salad so it gives me feelings reminiscent of being in transit/on the road. It's a very liminal tasting fruit if that makes sense.</p>
+    
+    </div>
+    
+    <div id="StrawberryText" style="display:none;background-color:rgb(255 255 255); border: 4mm ridge black;width:1000px;margin:auto;">
+    <h3 style="text-indent:5px;">My take:</h3>
+    <ul>
+      <li>Flavour <b>6/10</b></li>
+      <li>Texture <b>10/10</b></li>
+      <li>Emotional Aspect <b>3/10</b></li>
+    </ul>
+
+      <h4 style="text-indent:5px;">Flavour:</h4>
+      <p style="margin-left:30px;margin-right:5px;">I wish strawberries weren't so acidic and dry. I've said it before but I don't really jive all that much with tart fruits, and strawberries are such a trap. They alure you with the promise of a sweet juicy fruit, but by the end of the fruit your mouth is dry and puckered. The worst part is that the sweet, strawberry-ness of the initial flavour is amazing! Sigh... goddamn it...</p>
+      <h4 style="text-indent:5px;">Texture:</h4>
+      <p style="margin-left:30px;margin-right:5px;">Wow, just wow. I can't image a better texture for a fruit. It's got a nice amount of bite when ripe, and even when it gets mushy, you never get too grossed out (unless you wait like a month). It's not too juicy so as to ruin your shirt, but it is juicy enough to give you a lip spacking kick. The seeds on the outside adding a bit of variety in what you feel. ✧Amazing✧ I can't say that I love strawberries all that much, but what a texture.</p>
+      <h4 style="text-indent:5px;">Emotional Aspect:</h4>
+      <p style="margin-left:30px;margin-right:5px;">Strawberry flavored things are so delicious that it ends up tasting nothing like actual strawberries, and this creates a bit of a problem for my tiny brain. On the one hand, the chemically flavored strawberry stuff tastes amazing and I'm happy to be able to experience that, but on the other hand it feels so much more fake than other fruit flavored things because it doesn't even resemble what it's trying to mimic. It's just much more up front about being a bunch of chemicals I suppose and at the end of the day they're all the same. Anyways, I just wish that strawberries were stronger naturally, or maybe I've been conditioned by the strawberry candy...</p>
+    
+    </div>
+    
+    <div id="WatermelonText" style="display:none;background-color:rgb(255 255 255); border: 4mm ridge black;width:1000px;margin:auto;">
+    <h3 style="text-indent:5px;">My take:</h3>
+    <ul>
+      <li>Flavour <b>6/10</b></li>
+      <li>Texture <b>9/10</b></li>
+      <li>Emotional Aspect <b>7/10</b></li>
+    </ul>
+
+      <h4 style="text-indent:5px;">Flavour:</h4>
+      <p style="margin-left:30px;margin-right:5px;">Where to start with watermelon? I mean the name says a lot as it is for the flavour, and yet somehow watermelon is sweet and has a distinct flavour. While I cannot say that I enjoy watermelon juice, I do enjoy the flavour as I am eating the fruit. I think maybe my brain just gets confused when the flavour is not associated with the texture, or maybe the really good texture tricks my brain into thinking the flavour is better than it is... In any case, I like the flavour but it certainly isn't why I crave watermelon. It has a similar relationship as chips in chips and salsa. I'm not here for the chips, they're really just a conduit for me to enjoy the greater picture of chips and salsa, but if I were to remove the chips, I would have a distinctly different and worse experience.</p>
+      <h4 style="text-indent:5px;">Texture:</h4>
+      <p style="margin-left:30px;margin-right:5px;">WOW. Like apples, watermelon is extremely hit or miss, but as mentioned in that write-up, I'm judging these fruits at their best. The crunch is unparalleled, crispy and juicy. Unique and unparalleled, this is the quintessential summer snack.</p>
+      <h4 style="text-indent:5px;">Emotional Aspect:</h4>
+      <p style="margin-left:30px;margin-right:5px;"> Have you ever seen those little instagram/pinterest diagrams that explain if a watermelon is good? <br>
+      <img src="https://www.eagleeyeproduce.com/wp-content/uploads/2023/04/Watermelon-HTP-01-copy.jpg"> <br>
+      I think these are so funny, because someone made this and like at least 25% of the people who decided to act upon the kind words of this internet stranger were led astray. I mean how on Earth could you ever know this much information about a water by simply looking at one? This feels like every single city-slicker suburbanite being tricked by produce picking tactics that are not real. THIS SHIT AIN'T REAL, WATERMELON AIN'T NO MANGO!</p>
+    
+    </div>
+    
+    <div id="OrangeText" style="display:none;background-color:rgb(255 255 255); border: 4mm ridge black;width:1000px;margin:auto;">
+    <h3 style="text-indent:5px;">My take:</h3>
+    <ul>
+      <li>Flavour <b>/10</b></li>
+      <li>Texture <b>/10</b></li>
+      <li>Emotional Aspect <b>/10</b></li>
+    </ul>
+
+      <h4 style="text-indent:5px;">Flavour:</h4>
+      <p style="margin-left:30px;margin-right:5px;"></p>
+      <h4 style="text-indent:5px;">Texture:</h4>
+      <p style="margin-left:30px;margin-right:5px;"></p>
+      <h4 style="text-indent:5px;">Emotional Aspect:</h4>
+      <p style="margin-left:30px;margin-right:5px;"></p>
+    
+    </div>
+    
+    <div id="GrapefruitText" style="display:none;background-color:rgb(255 255 255); border: 4mm ridge black;width:1000px;margin:auto;">
+    <h3 style="text-indent:5px;">My take:</h3>
+    <ul>
+      <li>Flavour <b>1/10</b></li>
+      <li>Texture <b>7/10</b></li>
+      <li>Emotional Aspect <b>2/10</b></li>
+    </ul>
+
+      <h4 style="text-indent:5px;">Flavour:</h4>
+      <p style="margin-left:30px;margin-right:5px;"> BITTER! They (some people thousands of years ago who cultivated fruit trees) took a perfectly good citrus and made it taste bitter!! I know <i>some</i> people like that grapefruit is bitter, I believe that this comes from the idea that you can add something to the grapefruit (suger, honey, salt, etc.) to make it combine into a better taste. I can acknowledge fruit as an ingredient, however for the sake of this ranking I want to look at each fruit as its own thing. With that in mind, grapefruit is gross!!</p>
+      <h4 style="text-indent:5px;">Texture:</h4>
+      <p style="margin-left:30px;margin-right:5px;"> Grapefruit runs your standard citrus build, but invested heavily into size. I quite like the increased flesh to skin ratio (re: surface area to volume ratio) it somehow feels like the correct size for an orange adjacent citrus. Oranges have always felt a tad too small, and don't even get me started on fucking clementines.</p>
+      <h4 style="text-indent:5px;">Emotional Aspect:</h4>
+      <p style="margin-left:30px;margin-right:5px;">I wish I had stronger feelings towards grapefruit, alas I simply avoid this well-intentioned citrus like a middle school friend who shops at the same supermarket as me for the 2 weeks a year that I'm home. I would reach out, but it's been so long, and what if I get hurt again? Why should I put in more effort to a fruit that I know will dissapoint me unless I put in extra effort? Other people who have their lives more together than me can keep these kinds of relationships with their fruit. They can wake up every morning, peel a whole grapefruit, douse the thing in honey and carry on with their lives. But me? I'm just stuck in the past I suppose...</p>
+    
+    </div>
+    
+    <div id="GrapesText" style="display:none;background-color:rgb(255 255 255); border: 4mm ridge black;width:1000px;margin:auto;">
+    <h3 style="text-indent:5px;">My take:</h3>
+    <ul>
+      <li>Flavour <b>/10</b></li>
+      <li>Texture <b>/10</b></li>
+      <li>Emotional Aspect <b>/10</b></li>
+    </ul>
+
+      <h4 style="text-indent:5px;">Flavour:</h4>
+      <p style="margin-left:30px;margin-right:5px;"></p>
+      <h4 style="text-indent:5px;">Texture:</h4>
+      <p style="margin-left:30px;margin-right:5px;"></p>
+      <h4 style="text-indent:5px;">Emotional Aspect:</h4>
+      <p style="margin-left:30px;margin-right:5px;"></p>
+    
+    </div>
+    
+    
+    
+    </div>
+
+
+    
+    <script src="/fruitMostWanted.js" type="text/javascript" charset="utf-8"></script>
+  </body>
+</html>
