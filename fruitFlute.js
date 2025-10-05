@@ -86,33 +86,44 @@ function startDrag(e) {
         const audioFilePath = `/sounds/${fruitData.sound}`;
 
         fetch(audioFilePath)
-          .then(res => res.arrayBuffer())
-          .then(data => audioContext.decodeAudioData(data))
-          .then(buffer => {
-            const source = audioContext.createBufferSource();
-            const gainNode = audioContext.createGain();
-            const panner = audioContext.createStereoPanner();
-            const filter = audioContext.createBiquadFilter();
+  .then(res => res.arrayBuffer())
+  .then(data => audioContext.decodeAudioData(data))
+  .then(buffer => {
+    const source = audioContext.createBufferSource();
+    const gainNode = audioContext.createGain();
+    const panner = audioContext.createStereoPanner();
+    const filter = audioContext.createBiquadFilter();
+    const delay = audioContext.createDelay();
 
-            filter.type = 'lowpass';
-            filter.frequency.value = 10000;
+    // Set default values
+    filter.type = 'lowpass';
+    filter.frequency.value = 10000;
 
-            source.buffer = buffer;
-            source.loop = true;
+    delay.delayTime.value = 0.25; // Quarter second echo
+    gainNode.gain.value = 1.0;
+    panner.pan.value = 0;
 
-            source.connect(gainNode);
-            gainNode.connect(panner);
-            panner.connect(filter);
-            filter.connect(audioContext.destination);
+    source.buffer = buffer;
+    source.loop = true;
 
-            source.start();
+    // Chain:
+    // source → filter → delay → panner → gain → destination
+    source.connect(filter);
+    filter.connect(delay);
+    delay.connect(panner);
+    panner.connect(gainNode);
+    gainNode.connect(audioContext.destination);
 
-            clonedElem._audioData = {
-              source,
-              gainNode,
-              panner,
-              filter
-            };
+    source.start();
+
+    clonedElem._audioData = {
+      source,
+      gainNode,
+      panner,
+      filter,
+      delay
+    };
+  });
 
             clonedElem.addEventListener('click', () => {
               createPopupForFruitInstance(fruitData, clonedElem);
@@ -234,6 +245,57 @@ function createPopupForFruitInstance(fruitData, fruitElement) {
     popup.appendChild(document.createElement('br'));
   }
 
+  if (pan) {
+  const panLabel = document.createElement('label');
+  panLabel.innerText = 'Panning (L-R): ';
+  const panSlider = document.createElement('input');
+  panSlider.type = 'range';
+  panSlider.min = -1;
+  panSlider.max = 1;
+  panSlider.step = 0.01;
+  panSlider.value = audioData.panner.pan.value;
+  panSlider.addEventListener('input', () => {
+    audioData.panner.pan.value = panSlider.value;
+  });
+  panLabel.appendChild(panSlider);
+  popup.appendChild(panLabel);
+  popup.appendChild(document.createElement('br'));
+  }
+  
+  if (filter) {
+  const filterLabel = document.createElement('label');
+  filterLabel.innerText = 'Filter Frequency (Lowpass Hz): ';
+  const filterSlider = document.createElement('input');
+  filterSlider.type = 'range';
+  filterSlider.min = 100;
+  filterSlider.max = 20000;
+  filterSlider.step = 10;
+  filterSlider.value = audioData.filter.frequency.value;
+  filterSlider.addEventListener('input', () => {
+    audioData.filter.frequency.value = filterSlider.value;
+  });
+  filterLabel.appendChild(filterSlider);
+  popup.appendChild(filterLabel);
+  popup.appendChild(document.createElement('br'));
+  }
+  
+  if(delay) {
+  const delayLabel = document.createElement('label');
+  delayLabel.innerText = 'Delay Time (Echo): ';
+  const delaySlider = document.createElement('input');
+  delaySlider.type = 'range';
+  delaySlider.min = 0;
+  delaySlider.max = 1;
+  delaySlider.step = 0.01;
+  delaySlider.value = audioData.delay.delayTime.value;
+  delaySlider.addEventListener('input', () => {
+    audioData.delay.delayTime.value = delaySlider.value;
+  });
+  delayLabel.appendChild(delaySlider);
+  popup.appendChild(delayLabel);
+  popup.appendChild(document.createElement('br'));
+  }
+  
   const deleteBtn = document.createElement('button');
   deleteBtn.innerText = '🗑️ Delete Fruit';
   deleteBtn.style.marginTop = '10px';
