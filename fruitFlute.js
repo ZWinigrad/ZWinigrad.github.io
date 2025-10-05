@@ -23,14 +23,6 @@ const fruitArray = [
   { id: "21", fruit: "Strawberry", sound: "" },
   { id: "22", fruit: "Watermelon", sound: "" },
 ];
-const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-
-const fruitArray = [
-  { id: "1", fruit: "Apple", sound: "slap.mp3" },
-  { id: "2", fruit: "Asian Pear", sound: "slap.mp3" },
-  { id: "3", fruit: "Avocado", sound: "" },
-  // Add more fruits here...
-];
 
 const draggableItems = document.querySelectorAll('.draggable');
 const musicArea = document.querySelector('.music');
