@@ -1,7 +1,7 @@
 const audioContext = new (window.AudioContext || window.webkitAudioContext)();
 const fruitArray = [
-  {id: "1", fruit: "Apple", sound: "slap"},
-  {id: "2", fruit: "Asian Pear", sound: "slap"},
+  {id: "1", fruit: "Apple", sound: "slap.mp3"},
+  {id: "2", fruit: "Asian Pear", sound: "slap.mp3"},
   {id: "3", fruit: "Avocado", sound: ""},
   {id: "4", fruit: "Banana", sound: ""},
   {id: "5", fruit: "Blackberry", sound: ""},
@@ -78,18 +78,27 @@ function startDrag(e) {
       draggingElem.style.pointerEvents = 'auto';
 
       if (fruitData && fruitData.sound) {
-        fetch(fruitData.sound)
+        const audioFilePath = `/sounds/${fruitData.sound}`;
+
+        fetch(audioFilePath)
           .then(res => res.arrayBuffer())
           .then(data => audioContext.decodeAudioData(data))
           .then(buffer => {
             const source = audioContext.createBufferSource();
             const gainNode = audioContext.createGain();
             source.buffer = buffer;
-            source.loop = true; // 🔁 LOOP FIX
+            source.loop = true;
             source.connect(gainNode);
             gainNode.connect(audioContext.destination);
             source.start();
 
+            // Store references on the dragged element so we can manipulate or stop later
+            draggingElem.dataset.playingAudio = audioFilePath;
+            draggingElem._audioNodes = { source, gainNode };
+            })
+            .catch(err => console.error("Failed to load sound for fruit:", fruitData.fruit, err));
+            }
+      
             // Store audio context parts in the DOM element
             const instanceId = `audio-${Date.now()}`;
             draggingElem.dataset.audioId = instanceId;
