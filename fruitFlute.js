@@ -154,7 +154,8 @@ function startDrag(e) {
 function createPopupForFruitInstance(fruitData, fruitElement) {
   if (fruitElement.dataset.popupOpen) return;
 
-  const { source, gainNode, panner, filter } = fruitElement._audioData || {};
+  // Destructure audio nodes including delay
+  const { source, gainNode, panner, filter, delay } = fruitElement._audioData || {};
 
   const popup = document.createElement('div');
   popup.classList.add('audio-popup');
@@ -245,59 +246,26 @@ function createPopupForFruitInstance(fruitData, fruitElement) {
     popup.appendChild(document.createElement('br'));
   }
 
-  if (pan) {
-  const panLabel = document.createElement('label');
-  panLabel.innerText = 'Panning (L-R): ';
-  const panSlider = document.createElement('input');
-  panSlider.type = 'range';
-  panSlider.min = -1;
-  panSlider.max = 1;
-  panSlider.step = 0.01;
-  panSlider.value = audioData.panner.pan.value;
-  panSlider.addEventListener('input', () => {
-    audioData.panner.pan.value = panSlider.value;
-  });
-  panLabel.appendChild(panSlider);
-  popup.appendChild(panLabel);
-  popup.appendChild(document.createElement('br'));
+  if (delay) {
+    const delayLabel = document.createElement('label');
+    delayLabel.innerText = 'Delay Time (Echo): ';
+    const delaySlider = document.createElement('input');
+    delaySlider.type = 'range';
+    delaySlider.min = 0;
+    delaySlider.max = 1;
+    delaySlider.step = 0.01;
+    delaySlider.value = delay.delayTime.value;
+    delaySlider.addEventListener('input', () => {
+      delay.delayTime.value = delaySlider.value;
+    });
+    delayLabel.appendChild(delaySlider);
+    popup.appendChild(delayLabel);
+    popup.appendChild(document.createElement('br'));
   }
-  
-  if (filter) {
-  const filterLabel = document.createElement('label');
-  filterLabel.innerText = 'Filter Frequency (Lowpass Hz): ';
-  const filterSlider = document.createElement('input');
-  filterSlider.type = 'range';
-  filterSlider.min = 100;
-  filterSlider.max = 20000;
-  filterSlider.step = 10;
-  filterSlider.value = audioData.filter.frequency.value;
-  filterSlider.addEventListener('input', () => {
-    audioData.filter.frequency.value = filterSlider.value;
-  });
-  filterLabel.appendChild(filterSlider);
-  popup.appendChild(filterLabel);
-  popup.appendChild(document.createElement('br'));
-  }
-  
-  if(delay) {
-  const delayLabel = document.createElement('label');
-  delayLabel.innerText = 'Delay Time (Echo): ';
-  const delaySlider = document.createElement('input');
-  delaySlider.type = 'range';
-  delaySlider.min = 0;
-  delaySlider.max = 1;
-  delaySlider.step = 0.01;
-  delaySlider.value = audioData.delay.delayTime.value;
-  delaySlider.addEventListener('input', () => {
-    audioData.delay.delayTime.value = delaySlider.value;
-  });
-  delayLabel.appendChild(delaySlider);
-  popup.appendChild(delayLabel);
-  popup.appendChild(document.createElement('br'));
-  }
-  
+
+  // Delete button
   const deleteBtn = document.createElement('button');
-  deleteBtn.innerText = '🗑️ Delete Fruit';
+  deleteBtn.innerText = 'Delete';
   deleteBtn.style.marginTop = '10px';
   deleteBtn.addEventListener('click', () => {
     if (source) source.stop();
@@ -306,6 +274,7 @@ function createPopupForFruitInstance(fruitData, fruitElement) {
   });
   popup.appendChild(deleteBtn);
 
+  // Close button
   const closeBtn = document.createElement('button');
   closeBtn.innerText = 'Close';
   closeBtn.style.marginLeft = '10px';
@@ -318,12 +287,3 @@ function createPopupForFruitInstance(fruitData, fruitElement) {
   document.body.appendChild(popup);
   fruitElement.dataset.popupOpen = true;
 }
-
-
-
-
-
-
-
-
-
