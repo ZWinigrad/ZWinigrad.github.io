@@ -1,7 +1,7 @@
 const audioContext = new (window.AudioContext || window.webkitAudioContext)();
 const fruitArray = [
   { id: "1", fruit: "Apple", sound: "slap.mp3" },
-  { id: "2", fruit: "Asian Pear", sound: "slap.mp3" },
+  { id: "2", fruit: "Asian Pear", sound: "punch.mp3" },
   { id: "3", fruit: "Avocado", sound: "" },
   { id: "4", fruit: "Banana", sound: "" },
   { id: "5", fruit: "Blackberry", sound: "" },
