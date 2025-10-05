@@ -128,7 +128,7 @@ function startDrag(e) {
             clonedElem.addEventListener('click', () => {
               createPopupForFruitInstance(fruitData, clonedElem);
             });
-          }
+          })
           .catch(err => {
             console.error("Failed to load sound for fruit:", fruitData.fruit, err);
             clonedElem.addEventListener('click', () => {
@@ -284,6 +284,4 @@ function createPopupForFruitInstance(fruitData, fruitElement) {
 
   document.body.appendChild(popup);
   fruitElement.dataset.popupOpen = true;
-}
-
 }
