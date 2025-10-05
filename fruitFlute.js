@@ -40,12 +40,14 @@ function startDrag(e) {
   const fruitData = fruitArray.find(f => f.id === fruitId);
 
   draggingElem = original.cloneNode(true);
-  draggingElem.style.position = 'absolute';
-  draggingElem.style.pointerEvents = 'none';
-  draggingElem.style.opacity = 0.8;
-  draggingElem.style.zIndex = 2000;
-  draggingElem.style.width = original.offsetWidth + 'px';
-  draggingElem.style.height = original.offsetHeight + 'px';
+  Object.assign(draggingElem.style, {
+    position: 'absolute',
+    pointerEvents: 'none',
+    opacity: 0.8,
+    zIndex: 2000,
+    width: original.offsetWidth + 'px',
+    height: original.offsetHeight + 'px'
+  });
 
   document.body.appendChild(draggingElem);
   moveAt(e.pageX, e.pageY);
@@ -73,10 +75,12 @@ function startDrag(e) {
     if (isInMusicArea) {
       const clonedElem = draggingElem;
       musicArea.appendChild(clonedElem);
-      clonedElem.style.position = 'absolute';
-      clonedElem.style.left = (event.clientX - musicRect.left - clonedElem.offsetWidth / 2) + 'px';
-      clonedElem.style.top = (event.clientY - musicRect.top - clonedElem.offsetHeight / 2) + 'px';
-      clonedElem.style.pointerEvents = 'auto';
+      Object.assign(clonedElem.style, {
+        position: 'absolute',
+        left: (event.clientX - musicRect.left - clonedElem.offsetWidth / 2) + 'px',
+        top: (event.clientY - musicRect.top - clonedElem.offsetHeight / 2) + 'px',
+        pointerEvents: 'auto'
+      });
 
       if (fruitData && fruitData.sound) {
         const audioFilePath = `/sounds/${fruitData.sound}`;
@@ -87,18 +91,28 @@ function startDrag(e) {
           .then(buffer => {
             const source = audioContext.createBufferSource();
             const gainNode = audioContext.createGain();
+            const panner = audioContext.createStereoPanner();
+            const filter = audioContext.createBiquadFilter();
+            filter.type = 'lowpass';
+            filter.frequency.value = 10000; // default full range
+
             source.buffer = buffer;
             source.loop = true;
+
+            // Connect audio chain
             source.connect(gainNode);
-            gainNode.connect(audioContext.destination);
+            gainNode.connect(panner);
+            panner.connect(filter);
+            filter.connect(audioContext.destination);
+
             source.start();
 
-            clonedElem.dataset.playingAudio = audioFilePath;
-            clonedElem._audioNodes = { source, gainNode };
-
-            const instanceId = `audio-${Date.now()}`;
-            clonedElem.dataset.audioId = instanceId;
-            clonedElem._audioData = { source, gainNode, buffer };
+            clonedElem._audioData = {
+              source,
+              gainNode,
+              panner,
+              filter
+            };
 
             clonedElem.addEventListener('click', () => {
               createPopupForFruitInstance(fruitData, clonedElem);
@@ -125,9 +139,7 @@ function startDrag(e) {
 function createPopupForFruitInstance(fruitData, fruitElement) {
   if (fruitElement.dataset.popupOpen) return;
 
-  const audioData = fruitElement._audioData;
-  const source = audioData?.source;
-  const gainNode = audioData?.gainNode;
+  const { source, gainNode, panner, filter } = fruitElement._audioData || {};
 
   const popup = document.createElement('div');
   popup.classList.add('audio-popup');
@@ -150,7 +162,7 @@ function createPopupForFruitInstance(fruitData, fruitElement) {
   title.innerText = `${fruitData.fruit} Controls`;
   popup.appendChild(title);
 
-  // Volume control (if audio exists)
+  // Volume control
   if (gainNode) {
     const volumeLabel = document.createElement('label');
     volumeLabel.innerText = 'Volume: ';
@@ -168,10 +180,10 @@ function createPopupForFruitInstance(fruitData, fruitElement) {
     popup.appendChild(document.createElement('br'));
   }
 
-  // Pitch control (if audio exists)
+  // Pitch control
   if (source) {
     const pitchLabel = document.createElement('label');
-    pitchLabel.innerText = 'Pitch (PlaybackRate): ';
+    pitchLabel.innerText = 'Pitch (Playback Rate): ';
     const pitchSlider = document.createElement('input');
     pitchSlider.type = 'range';
     pitchSlider.min = 0.5;
@@ -186,13 +198,67 @@ function createPopupForFruitInstance(fruitData, fruitElement) {
     popup.appendChild(document.createElement('br'));
   }
 
+  // Panning control
+  if (panner) {
+    const panLabel = document.createElement('label');
+    panLabel.innerText = 'Pan (Left ↔ Right): ';
+    const panSlider = document.createElement('input');
+    panSlider.type = 'range';
+    panSlider.min = -1;
+    panSlider.max = 1;
+    panSlider.step = 0.01;
+    panSlider.value = panner.pan.value;
+    panSlider.addEventListener('input', () => {
+      panner.pan.value = panSlider.value;
+    });
+    panLabel.appendChild(panSlider);
+    popup.appendChild(panLabel);
+    popup.appendChild(document.createElement('br'));
+  }
+
+  // Low-pass filter control
+  if (filter) {
+    const filterLabel = document.createElement('label');
+    filterLabel.innerText = 'Low-pass (Muffle): ';
+    const filterSlider = document.createElement('input');
+    filterSlider.type = 'range';
+    filterSlider.min = 100;
+    filterSlider.max = 10000;
+    filterSlider.step = 1;
+    filterSlider.value = filter.frequency.value;
+    filterSlider.addEventListener('input', () => {
+      filter.frequency.value = filterSlider.value;
+    });
+    filterLabel.appendChild(filterSlider);
+    popup.appendChild(filterLabel);
+    popup.appendChild(document.createElement('br'));
+  }
+
+  // Delete Button
+  const deleteBtn = document.createElement('button');
+  deleteBtn.innerText = '🗑️ Delete Fruit';
+  deleteBtn.style.marginTop = '10px';
+  deleteBtn.addEventListener('click', () => {
+    if (source) source.stop();
+    popup.remove();
+    fruitElement.remove();
+  });
+  popup.appendChild(deleteBtn);
+
+  // Close Button
   const closeBtn = document.createElement('button');
   closeBtn.innerText = 'Close';
+  closeBtn.style.marginLeft = '10px';
   closeBtn.addEventListener('click', () => {
     popup.remove();
     delete fruitElement.dataset.popupOpen;
   });
   popup.appendChild(closeBtn);
+
+  document.body.appendChild(popup);
+  fruitElement.dataset.popupOpen = true;
+}
+
 
   document.body.appendChild(popup);
   fruitElement.dataset.popupOpen = true;
