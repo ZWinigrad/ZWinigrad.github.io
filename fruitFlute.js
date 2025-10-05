@@ -83,63 +83,58 @@ function startDrag(e) {
       });
 
       if (fruitData && fruitData.sound) {
-        const audioFilePath = `/sounds/${fruitData.sound}`;
+  const audioFilePath = `/sounds/${fruitData.sound}`;
 
-        fetch(audioFilePath)
-  .then(res => res.arrayBuffer())
-  .then(data => audioContext.decodeAudioData(data))
-  .then(buffer => {
-    const source = audioContext.createBufferSource();
-    const gainNode = audioContext.createGain();
-    const panner = audioContext.createStereoPanner();
-    const filter = audioContext.createBiquadFilter();
-    const delay = audioContext.createDelay();
+  fetch(audioFilePath)
+    .then(res => res.arrayBuffer())
+    .then(data => audioContext.decodeAudioData(data))
+    .then(buffer => {
+      const source = audioContext.createBufferSource();
+      const gainNode = audioContext.createGain();
+      const panner = audioContext.createStereoPanner();
+      const filter = audioContext.createBiquadFilter();
+      const delay = audioContext.createDelay();
 
-    // Set default values
-    filter.type = 'lowpass';
-    filter.frequency.value = 10000;
+      filter.type = 'lowpass';
+      filter.frequency.value = 10000;
 
-    delay.delayTime.value = 0.25; // Quarter second echo
-    gainNode.gain.value = 1.0;
-    panner.pan.value = 0;
+      delay.delayTime.value = 0.25; // Quarter second echo
+      gainNode.gain.value = 1.0;
+      panner.pan.value = 0;
 
-    source.buffer = buffer;
-    source.loop = true;
+      source.buffer = buffer;
+      source.loop = true;
 
-    // Chain:
-    // source → filter → delay → panner → gain → destination
-    source.connect(filter);
-    filter.connect(delay);
-    delay.connect(panner);
-    panner.connect(gainNode);
-    gainNode.connect(audioContext.destination);
+      // Connect nodes: source → filter → delay → panner → gain → destination
+      source.connect(filter);
+      filter.connect(delay);
+      delay.connect(panner);
+      panner.connect(gainNode);
+      gainNode.connect(audioContext.destination);
 
-    source.start();
+      source.start();
 
-    clonedElem._audioData = {
-      source,
-      gainNode,
-      panner,
-      filter,
-      delay
-    };
+      clonedElem._audioData = {
+        source,
+        gainNode,
+        panner,
+        filter,
+        delay
+      };
+    })
+    .catch(err => {
+      console.error("Failed to load sound for fruit:", fruitData.fruit, err);
+    });
+
+  // Add click listener after starting the fetch chain (outside of .then)
+  clonedElem.addEventListener('click', () => {
+    createPopupForFruitInstance(fruitData, clonedElem);
   });
-
-            clonedElem.addEventListener('click', () => {
-              createPopupForFruitInstance(fruitData, clonedElem);
-            });
-          })
-          .catch(err => {
-            console.error("Failed to load sound for fruit:", fruitData.fruit, err);
-            clonedElem.addEventListener('click', () => {
-              createPopupForFruitInstance(fruitData, clonedElem);
-            });
-          });
-      } else {
-        clonedElem.addEventListener('click', () => {
-          createPopupForFruitInstance(fruitData, clonedElem);
-        });
-      }
+} else {
+  clonedElem.addEventListener('click', () => {
+    createPopupForFruitInstance(fruitData, clonedElem);
+  });
+}
     } else {
       draggingElem.remove();
     }
