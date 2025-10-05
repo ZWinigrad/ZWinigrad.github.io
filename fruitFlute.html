@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Security-Policy" content="
+  default-src 'self';
+  script-src 'self';
+  connect-src 'self' https://files.catbox.moe;
+  media-src 'self' https://files.catbox.moe data:;
+  img-src 'self' data:;
+  font-src 'self';
+  style-src 'self' 'unsafe-inline';
+">
+  <title>Fruit Flute</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 200vh;
+    }
+    .music {
+      width: 70%;
+      height: 70%;
+      background-color: #bbdb44;
+      position: fixed;
+      top: 10%;
+      left: 15%;
+    }
+    .scroll-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 150px;
+      background: #f9f9f9;
+      border-top: 1px solid #ccc;
+      overflow-x: auto;
+      white-space: nowrap;
+      z-index: 1000;
+    }
+    .scroll-content {
+      display: flex;
+      height: 100%;
+      align-items: center;
+    }
+    .cell {
+      min-width: 200px;
+      height: 100%;
+      border-right: 1px solid #ddd;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .draggable {
+      width: 100px;
+      height: 100px;
+      cursor: grab;
+    }
+    .audio-popup {
+      /* optional styling, could be more polished */
+      background: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="music"></div>
+
+  <div class="scroll-bar">
+    <div class="scroll-content">
+      <div class="cell"><img data-id="1" class="draggable" draggable="true" src="/apple.png"></div>
+      <div class="cell"><img data-id="2" class="draggable" draggable="true" src="/Asianpear.png"></div>
+      <div class="cell"><img data-id="3" class="draggable" draggable="true" src="/avocado.png"></div>
+      <div class="cell"><img data-id="4" class="draggable" draggable="true" src="/banana.png"></div>
+      <div class="cell"><img data-id="5" class="draggable" draggable="true" src="/blackberry.png"></div>
+      <div class="cell"><img data-id="6" class="draggable" draggable="true" src="/blueberry.png"></div>
+      <div class="cell"><img data-id="7" class="draggable" draggable="true" src="/Cantaloupe.png"></div>
+      <div class="cell"><img data-id="8" class="draggable" draggable="true" src="/cherry.png"></div>
+      <div class="cell"><img data-id="9" class="draggable" draggable="true" src="/dragonfruit1.png"></div>
+      <div class="cell"><img data-id="10" class="draggable" draggable="true" src="/GrapefruitUncut.png"></div>
+      <div class="cell"><img data-id="11" class="draggable" draggable="true" src="/grapes.png"></div>
+      <div class="cell"><img data-id="12" class="draggable" draggable="true" src="/Honeydew.png"></div>
+      <div class="cell"><img data-id="13" class="draggable" draggable="true" src="/kiwi.png"></div>
+      <div class="cell"><img data-id="14" class="draggable" draggable="true" src="/pixelOrange4.png"></div>
+      <div class="cell"><img data-id="15" class="draggable" draggable="true" src="/peach.png"></div>
+      <div class="cell"><img data-id="16" class="draggable" draggable="true" src="/pear.png"></div>
+      <div class="cell"><img data-id="17" class="draggable" draggable="true" src="/pineapple.png"></div>
+      <div class="cell"><img data-id="18" class="draggable" draggable="true" src="/plum.png"></div>
+      <div class="cell"><img data-id="19" class="draggable" draggable="true" src="/pixelpom.png"></div>
+      <div class="cell"><img data-id="20" class="draggable" draggable="true" src="/raspberry.png"></div>
+      <div class="cell"><img data-id="21" class="draggable" draggable="true" src="/strawberry.png"></div>
+      <div class="cell"><img data-id="22" class="draggable" draggable="true" src="/watermelon.png"></div>
+    </div>
+  </div>
+
+
+
+</body>
+<script src="/fruitFlute.js"></script>
+</html>
