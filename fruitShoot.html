@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+
+<!-- make lose condition? -->
+
+
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fruit Shoot</title>
+    <link href="/style.css" rel="stylesheet" type="text/css" media="all">
+  </head>
+  <body id="body" style="cursor:crosshair;background-image:url('https://cdn.mos.cms.futurecdn.net/v2/t:0,l:133,cw:533,ch:533,q:80,w:533/EofuTa42mfBXgFqVWHnGXV.jpg');background-size:cover;user-select:none;">
+    <h1 style="text-align:center;userSelect:none;"><span id="title" style="background-color:white;userSelect:none;">Fruit Shoot!</span></h1>
+    <div id="div" style="cursor:crosshair;">
+    </div>
+    
+   <a id="baloon" href="/"> 
+      <img src="/ballgif.gif" style="position:fixed;top:5%;left:4%;width:7%;cursor:pointer;"
+        onmouseenter="ballhov.style.display = 'block';"
+        onmouseout="ballhov.style.display = 'none';">
+   </a>
+    
+   <h3 id="ballhov" style="display: none; text-align: center; position: fixed; top: 19%; left: 4%;">Back Home</h3>
+
+   <div id="crabs" style="user-select:none;display: grid;grid-template-columns: repeat(3, 1fr);gap: 50px;box-sizing: border-box;width: 100%;padding: 0 50px;justify-items: center;align-items: center;">
+    <img id="l1" class="hue" style="user-select:none;box-sizing: border-box; max-width: 300px; align-self: center; mix-blend-mode: multiply;" src="/ghost.gif">
+    <img id="l2" class="hue" style="user-select:none;box-sizing: border-box; max-width: 300px; align-self: center; mix-blend-mode: multiply;" src="/reefcrab.gif">
+    <img id="l3" class="hue" style="user-select:none;box-sizing: border-box; max-width: 300px; align-self: center; mix-blend-mode: multiply;" src="/fiddler.gif">
+    <h1></h1>
+    <div id="menuPopup" style="display: none; background-color: white; padding: 20px; border: 1px solid black;">
+        <h2 id="ltitle" style="text-align: center;"></h2>
+        <p id="desc" style="text-align: center;"></p>
+    </div>
+    <h1></h1>
+    </div>
+
+
+    <div style="position:fixed;top:80%;left:4%;" id="menu" >
+      <img style="width:100px;height:100px;" src="https://i.gifer.com/Ybin.gif">
+      <h4 style="position:relative;top:-30px;left:10px">The Almanac</h4>
+    </div>
+    
+    
+    <div style="position:fixed;top:97%;left:77%;">
+      <form id="pelletForm" style="display:none;">
+        <label for="pelletCount">Pellet Count:</label>
+          <input type="number" id="pelletCount" name="pelletCount" value="15" min="1" max="100" />
+        <button type="submit">Set</button>
+      </form>
+    </div>
+    
+    <div style="position:fixed;top:94%;left:77%;">
+      <form id="radiusForm" style="display:none;">
+        <label for="pelletRadius">Pellet Radius:</label>
+          <input type="number" id="pelletRadius" name="pelletRadius" value="75" min="25" max="100" />
+        <button type="submit">Set</button>
+      </form>
+    </div>
+    
+    <div style="position:fixed;width:10%;height:3%;top:80.5%;left:90%;">
+      <p id="gunbar" style="text-align:center;background-color:white;"> Shotgun Mode OFF</p>
+    </div>
+    <div style="position:fixed;width:10%;height:15%;top:85%;left:90%;background-color:blue;">
+      <img id="gunmenu" src="https://i.imgur.com/GcAZSze.gif" style="width:100%;height:100%">
+    </div>
+    
+    <div id="almanac" style="padding:auto;display:none;background-image: url('/library.jpg');background-size:cover;overflow-y:auto;cursor:auto;" class="gamePopup">
+      
+      <div id="close" style="width:75px;height:75px;background-color:white;position:fixed;top:2%;left:94%;text-align:center;display:flex;justify-content:center;align-items:center;cursor:pointer;user-select:none;">
+      <h1 style="position:absolute;font-size:60px;font-family:arial;">X</h1>
+      </div>
+      
+      <h1></h1>
+      <h1><span style="background-color:white;">Enemy List!</span></h1>
+      <h1></h1>
+  
+        <div class="entry">
+          <h3><u>Armillaria Root Rot</u></h3>
+          These guys make up Honey Fungi <br>
+          They are generally edible, but need to be cooked <b>thoroughly</b><br>
+          <br>
+            <div style="display:flex;">
+              <div style="flex-grow: 1"><img src="/armillaria.png" style="height:100px"> <br>
+              microscopic <br> (fungus)
+              </div>
+              <div style="flex-grow: 1"><img src="/armillaria fruit.png" style="width:100px"> <br>
+              fruit <br> (fruiting body)
+              </div>
+            </div>
+          <p> "The largest known specimen (an <a href="https://en.wikipedia.org/wiki/Armillaria_ostoyae">A. ostoyae</a>) covers more than 3.4 square miles (8.8 km2) in <a href="https://en.wikipedia.org/wiki/Oregon">Oregon</a> and is estimated to be 2,500 years old." <br>
+          - <a href="https://en.wikipedia.org/wiki/Armillaria">Wikipedia</a></p>
+        </div>
+      
+        <div class="entry">
+          <h3><u>Brown Rot</u></h3>
+          Rotten to da core <br>
+          We're EVIL!!!<br>
+            <div style="display:flex;">
+              <div style="flex-grow: 1"><img src="/brown rot.png" style="height:100px"> <br>
+              microscopic <br> (also a fungus)
+              </div>
+              <div style="flex-grow: 1"><img src="/brown rot fruit.png" style="width:100px"> <br>
+              The rot consumes <br> (fruit)
+              </div>
+            </div>
+          <p> To learn more about how these pests are managed click here!</p>
+        </div>        
+      
+        <div class="entry">
+          <h3><u>Powdery Mildews</u></h3>
+          mold... <br>
+          hmmmmmmmmmmmmmmm<br>
+            <div style="display:flex;">
+              <div style="flex-grow: 1"><img src="/mildew1.png" style="height:100px"> <br>
+              tall mold <br> (mold)
+              </div>
+              <div style="flex-grow: 1"><img src="/mildew2.png" style="width:100px"> <br>
+              splat <br> (splat mold)
+              </div>
+            </div>
+          <p> To learn more about how these pests are managed click here!</p>
+        </div>      
+      
+        <div class="entry">
+          <h3><u>Cedar-Apple Rust</u></h3>
+          This shit looks like a fucking alien! <br>
+          Holy balls dude!<br>
+            <div style="display:flex;">
+              <div style="flex-grow: 1;align-self:center;"><img src="/gall.png" style="height:100px"> <br>
+              Hydrated Gall
+              </div>
+              <div style="flex-grow: 1;align-self:center;"><img src="/gall2.png" style="width:100px"> <br>
+              Dehydrated Gall
+              </div>
+            </div>
+        </div>
+        
+        <div class="entry">
+          <h3><u>Nematodes</u></h3>
+          They small <br>
+          They super small!<br>
+            <div style="display:flex;">
+              <div style="flex-grow: 1;align-self:center;"><img src="/nematode1.png" style="height:100px"> <br>
+              Nematode <br> (1)
+              </div>
+              <br>
+              <br>
+              <div style="flex-grow: 1;align-self:center;"><img src="/nematode2.png" style="width:100px"> <br>
+              Nematode <br> (2)
+              </div>
+            </div>
+          <p> To learn more about how [NEMATODES] are managed click <a href="https://www.business.qld.gov.au/industries/farms-fishing-forestry/agriculture/biosecurity/plants/insects/horticultural/banana-weevil-borer">[LINK FOR NEMATODES]!</a></p>
+        </div>
+        
+        <div class="entry">
+          <h3><u>Bacteria</u></h3>
+          Bacteriums <br>
+          You are made of them and they are made of you<br>
+            <div style="display:flex;">
+              <div style="flex-grow: 1;align-self:center;"><img src="/bacteria1.png" style="height:100px"> <br>
+              Bacterium <br> (1)
+              </div>
+              <br>
+              <br>
+              <div style="flex-grow: 1;align-self:center;"><img src="/bacteria2.png" style="width:100px"> <br>
+              Bacterium <br> (2)
+              </div>
+            </div>
+          <p> To learn more about how [Bacteria] are managed click <a href="https://www.business.qld.gov.au/industries/farms-fishing-forestry/agriculture/biosecurity/plants/insects/horticultural/banana-weevil-borer">[LINK FOR NEMATODES]!</a></p>
+        </div>
+        
+        <div class="entry">
+          <h3><u>Viruses</u></h3>
+          It's alive (?) (!) <br>
+          It is designed to kill you...<br>
+            <div style="display:flex;">
+              <div style="flex-grow: 1;align-self:center;"><img src="/virus1.png" style="height:100px"> <br>
+              Virus <br> (1)
+              </div>
+              <br>
+              <br>
+              <div style="flex-grow: 1;align-self:center;"><img src="/virus2.png" style="width:100px"> <br>
+              Virus <br> (2)
+              </div>
+            </div>
+          <p> To learn more about how [NEMATODES] are managed click <a href="https://www.business.qld.gov.au/industries/farms-fishing-forestry/agriculture/biosecurity/plants/insects/horticultural/banana-weevil-borer">[LINK FOR NEMATODES]!</a></p>
+        </div>
+        
+        <div class="entry">
+          <h3><u>Banana Weevils</u></h3>
+          These guys eat banana corms! <br>
+          They bring us ever closer to the forever demise of our beloved fruit!<br>
+            <div style="display:flex;">
+              <div style="flex-grow: 1;align-self:center;"><img src="/Banana Weevil Larva.png" style="height:100px"> <br>
+              Larva <br> (grub mode)
+              </div>
+              <div style="flex-grow: 1;align-self:center;"><img src="/Banana Weevil.png" style="width:100px"> <br>
+              Adult <br> (fully grown bastard)
+              </div>
+            </div>
+          <p> To learn more about how these pests are managed click <a href="https://www.business.qld.gov.au/industries/farms-fishing-forestry/agriculture/biosecurity/plants/insects/horticultural/banana-weevil-borer">here!</a></p>
+        </div>
+        
+        <div class="entry">
+          <h3><u>Codling Moths</u></h3>
+          These guys are moths! <br>
+          They meoths!<br>
+            <div style="display:flex;">
+              <div style="flex-grow: 1;align-self:center;"><img src="/codling pillar.png" style="width:100px"> <br>
+              Caterpillar <br> (fat tube mode)
+              </div>
+              <div style="flex-grow: 1;align-self:center;"><img src="/codling moth.png" style="width:100px"> <br>
+              Adult <br> (Momma moth)
+              </div>
+            </div>
+          <p> To learn more about how [CODLING MOTHS] are managed click <a href="https://www.business.qld.gov.au/industries/farms-fishing-forestry/agriculture/biosecurity/plants/insects/horticultural/banana-weevil-borer">[CODLING MOTH LINK]!</a></p>
+        </div>
+        
+        <div class="entry">
+          <h3><u>Fruit Fly</u></h3>
+          <p>Fruit flies are evil creation by a ruthless god <br>
+          They must be burned by the hell fires that created them </p> <br>
+            <div style="display:flex;">
+              <div style="flex-grow: 1;align-self:center;"><img src="/fly.png" style="height:100px">
+              </div>
+              <div style="flex-grow: 1;align-self:center;"><img src="/fly2.gif" style="width:100px">
+              </div>
+            </div>
+        </div>        
+        
+        <div class="entry">
+          <h3><u> Japanese Beetle</u></h3>
+          彼わ悪いとてもはやい <br>
+          (he is bad, and very fast) <br>
+          無事に家に帰ってください <br>
+          (please return home safely) <br>
+          <img src="/Japanese Beetle.png" style="width:100px">
+        </div>
+        
+        <div class="entry">
+          <h3><u>Peach Tree Borer</u></h3>
+          Yum <br>
+          Eat (peach) tree <br>
+          <img src="/borer.png" style="width:100px">
+        </div>
+        
+        <div class="entry">
+          <h3><u>Coconut Crab</u></h3>
+          <p> Dear lord <br>
+          big fucking crab </p> <br>
+            <div style="display:flex;">
+              <div style="flex-grow: 1;align-self:center;"><img src="/cocrab1.png" style="height:100px">
+              </div>
+              <div style="flex-grow: 1;align-self:center;"><img src="/cocrab2.png" style="width:100px">
+              </div>
+            </div>
+        </div> 
+        
+        <div class="entry">
+          <h3><u>Cool Wizard</u></h3>
+          he might have SOME knowledge...
+          <br>
+          <br>
+          <br>
+            <div style="display:flex;">
+              <div style="flex-grow: 1"><img id="wizard" src="https://img1.picmix.com/output/stamp/normal/3/6/1/6/1996163_c1d92.gif" style="height:100px"> <br>
+              <br>
+              (he's pretty old)
+              </div>
+            </div>
+        </div>
+      
+      
+        <div class="entry">
+          <h3><u>Sick-Ass gif</u></h3>
+          <p> Holy Balls gif <br>
+          feel free to copy image address </p> <br>
+            <div style="display:flex;">
+              <div style="flex-grow: 1;align-self:center;"><img src="https://media.tenor.com/hA5gyPN_SYAAAAAM/how-ar.gif" style="height:100px">
+              </div>
+            </div>
+        </div> 
+        
+        
+      </div>
+
+      <div class="gamePopup" id="stip" style="display:none;background-image:url('/paper.jpg');background-size:cover;width:50%;height:auto">
+        <h2> Wziard poetry</h2>
+        <h4>Haiku</h4>
+        <p>Keyboard Warrior <br>
+        Send me strength in trying times <br>
+        One key holds much power</p>
+        
+        <h4>Riddle</h4>
+        <p>Range is more and pellets three <br>
+        The answer lies from A to D. <br> 
+        One becomes many, and foes become few <br>
+        A mighty wziard becomes of you!</p>
+        
+        <br>
+        
+        <img id="closewiz" src="https://img1.picmix.com/output/stamp/normal/3/6/1/6/1996163_c1d92.gif">
+        
+        </div>
+
+
+    <script src="/fruitShoot.js" type="text/javascript" charset="utf-8"></script>
+  </body>
+</html>
