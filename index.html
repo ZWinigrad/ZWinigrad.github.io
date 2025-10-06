@@ -31,45 +31,45 @@
     
     
     <div style="background-image:radial-gradient(circle, white 35%, grey, black);height:100%;width:100%;left:0;top:0;position:fixed">
-      <img src="/bowl.png" style="position:fixed;top:45%;left:25%;width:50%;height:50%">
+      <img src="/assests/bowl.png" style="position:fixed;top:45%;left:25%;width:50%;height:50%">
       
       <button id="buzzToggle" style="position:fixed;top:90%;left:5%;">Toggle <br> Buzz</button>
       
        <button id="newBug" style="position:fixed;top:90%;left:10%;">More <br> Bugs</button>
       
       <a href="/fruitsMostWanted.html">
-        <img id="pom" src="/pixelpom.png" style="position:fixed;top:15%;left:30%;width:20%;rotate:315deg;">
+        <img id="pom" src="/assests/pixelpom.png" style="position:fixed;top:15%;left:30%;width:20%;rotate:315deg;">
       </a>
       
       <a href="/fruitFlute.html"> 
-        <img id="pear"  src="/pear.png" style="position:fixed;top:15%;left:47%;width:15%;rotate:25deg;">
+        <img id="pear"  src="/assests/pear.png" style="position:fixed;top:15%;left:47%;width:15%;rotate:25deg;">
       </a>  
       
       <a href="/fruitToots">  
-        <img id="banana"  src="/banana.png" style="position:fixed;top:30%;left:27%;width:25%;">
+        <img id="banana"  src="/assests/banana.png" style="position:fixed;top:30%;left:27%;width:25%;">
       </a>  
       
       <a href="/Games.html">  
-        <img id="grapes"  src="/grapes.png" style="position:fixed;top:35%;left:35%;width:25%;">
+        <img id="grapes"  src="/assests/grapes.png" style="position:fixed;top:35%;left:35%;width:25%;">
       </a>  
        
       <a href="/fruitShoot.html">  
-        <img id="mango"  src="/pixelMango4.png" style="position:fixed;top:35%;left:55%;width:20%;rotate:135deg;">
+        <img id="mango"  src="/assests/pixelMango4.png" style="position:fixed;top:35%;left:55%;width:20%;rotate:135deg;">
       </a>  
       
       <a href="/fruitMostWanted.html">  
-        <img id="orange"  src="/pixelOrange4.png" style="position:fixed;top:45%;left:45%;width:15%;">
+        <img id="orange"  src="/assests/pixelOrange4.png" style="position:fixed;top:45%;left:45%;width:15%;">
       </a>  
        
       <a href="/aboutMe.html">  
-        <img id="grapefruit"  src="/grapefruit.png" style="position:fixed;top:70%;left:75%;width:25%;">
+        <img id="grapefruit"  src="/assests/grapefruit.png" style="position:fixed;top:70%;left:75%;width:25%;">
       </a>  
       
       <a href="/fruitSuits.html">  
-        <img id="strawberry"  src="/strawberry.png" style="position:fixed;top:8%;left:45%;width:10%;rotate:15deg;">
+        <img id="strawberry"  src="/assests/strawberry.png" style="position:fixed;top:8%;left:45%;width:10%;rotate:15deg;">
       </a>
 
-      <img src="/bowl2.png" style="position:fixed;top:50%;left:25%;width:50%;height:45%;pointer-events:none;">
+      <img src="/assests/bowl2.png" style="position:fixed;top:50%;left:25%;width:50%;height:45%;pointer-events:none;">
       
     </div>
     
@@ -78,7 +78,7 @@
       <p id="desc" style="text-align:center;"></p>
     </div>
     
-    <img src="/fly.png" id="fly" style="position:fixed;top:5%;left:25%;width:4%;height:6%;transition:left 0.5s ease, top 0.5s ease;">
+    <img src="/assests/fly.png" id="fly" style="position:fixed;top:5%;left:25%;width:4%;height:6%;transition:left 0.5s ease, top 0.5s ease;">
     
     
   <script>
@@ -157,9 +157,9 @@
     });
     
     fly.addEventListener ('click', function() {
-      body.style.cursor = "url('/cursorfly1.ico'), default";
+      body.style.cursor = "url('/assests/cursorfly1.ico'), default";
       fruits.forEach(item => {
-        item.element.style.cursor = "url('/cursorfly1.ico'), default"
+        item.element.style.cursor = "url('/assests/cursorfly1.ico'), default"
       });
       flyBuzz.pause();
       slap.play();
@@ -187,7 +187,7 @@
     newBug.addEventListener ('click', function() {
 
     const newfly = document.createElement('img');
-      newfly.src = "/fly.png";
+      newfly.src = "/assests/fly.png";
       newfly.style = "position:fixed; top:5%; left:25%; width:4%; height:6%; transition:left 0.5s ease, top 0.5s ease;";
       body.appendChild(newfly);
 
@@ -204,9 +204,9 @@
     });
 
     newfly.addEventListener ('click', function() {
-      body.style.cursor = "url('/cursorfly1.ico'), default";
+      body.style.cursor = "url('/assests/cursorfly1.ico'), default";
       fruits.forEach(item => {
-      item.element.style.cursor = "url('/cursorfly1.ico'), default"
+      item.element.style.cursor = "url('/assests/cursorfly1.ico'), default"
       });
       flyBuzz.pause();
       slap.play();
