@@ -243,7 +243,7 @@ function createShotgunBlastEffect(x, y) {
   blast.style.top = `${y - 7.5}px`;
   blast.style.width = "10px";
   blast.style.height = "10px";
-  blast.style.backgroundImage = "url('/bullethole.png')";
+  blast.style.backgroundImage = "url('/assests/bullethole.png')";
   blast.style.backgroundSize = "cover";
   blast.style.borderRadius = "50%";
   blast.style.opacity = "1";
@@ -583,7 +583,7 @@ l1.addEventListener('click', function () {
 
   spawnMultipleEntities({
     count: 1,
-    src: "/armillaria.png",
+    src: "/assests/armillaria.png",
     titleText: "Straight from the Petri Dish...",
     background: "https://www.mini-plast.com/wp-content/uploads/Petri-Dishes-in-Laboratory.png",
     left: "50%",
@@ -592,7 +592,7 @@ l1.addEventListener('click', function () {
     onComplete: () => {
       spawnMultipleEntities({
         count: 1,
-        src: "/brown rot.png",
+        src: "/assests/brown rot.png",
         titleText: "And into the Plants!",
         background: "https://lh5.ggpht.com/1ZKnGM1ENNyh61BRQT61XTJ11NP8HNSBWRgkbbj0xtGGX6kj48wNVMpLSJFP16pDddXCPjNADWAeB0wGumtO=s985",
         speed: 1250,
@@ -601,7 +601,7 @@ l1.addEventListener('click', function () {
         onComplete: () => {
           spawnMultipleEntities({
             count: 3,
-            src: "/mildew1.png",
+            src: "/assests/mildew1.png",
             titleText: "Garden Galavanters",
             background: "https://www.thompson-morgan.com/static-images/master/static-images/diseases/powdery-mildew/white-spots-on-leaves.jpg",
             speed: 1250,
@@ -610,7 +610,7 @@ l1.addEventListener('click', function () {
             onComplete: () => {
               spawnMultipleEntities({
                 count: 4,
-                src: "/mildew2.png",
+                src: "/assests/mildew2.png",
                 titleText: "Mildew Mayhem!!",
                 speed: 1250,
                 background: "https://squashandawe.com/wp-content/uploads/2015/06/dsc_0398.jpg",
@@ -619,7 +619,7 @@ l1.addEventListener('click', function () {
                 onComplete: () => {
                   spawnMultipleEntities({
                     count: 3,
-                    src: "/brown rot fruit.png",
+                    src: "/assests/brown rot fruit.png",
                     titleText: "Orchard Onslaught",
                     speed: 1000,
                     background: "https://media.istockphoto.com/id/177021819/photo/peach-orchard.jpg?s=612x612&w=0&k=20&c=2gDtXiT1BG9rYQ9EZovEHKRbeBkfL18n8EeKC79AGGg=",
@@ -628,7 +628,7 @@ l1.addEventListener('click', function () {
                     onComplete: () => {
                       spawnMultipleEntities({
                         count: 1,
-                        src: "/gall.png",
+                        src: "/assests/gall.png",
                         titleText: "Rust Gall!",
                         background: "https://growitbuildit.com/wp-content/uploads/2023/01/eastern-red-cedar-cones2.jpg",
                         top: "40%",
@@ -636,7 +636,7 @@ l1.addEventListener('click', function () {
                         onComplete: () => {
                           spawnMultipleEntities({
                             count: 5,
-                            src: "/gall2.png",
+                            src: "/assests/gall2.png",
                             titleText: "Galls Galore!",
                             speed: 1000,
                             growRate: 30,
@@ -646,7 +646,7 @@ l1.addEventListener('click', function () {
                             onComplete: () => {
                               spawnMultipleEntities({
                                 count: 5,
-                                src: "/armillaria fruit.png",
+                                src: "/assests/armillaria fruit.png",
                                 titleText: "Fruit Fiasco!",
                                 speed: 1000,
                                 growRate: 30,
@@ -657,7 +657,7 @@ l1.addEventListener('click', function () {
                                   spawnBoss({
                                     health: 5,
                                     count: 1,
-                                    src: "/armillaria fruit.png",
+                                    src: "/assests/armillaria fruit.png",
                                     titleText: "Boss Fight!",
                                     speed: 800,
                                     growRate: 30,
@@ -697,7 +697,7 @@ l2.addEventListener('click', function () {
 
   spawnMultipleEntities({
     count: 3,
-    src: "/virus1.png",
+    src: "/assests/virus1.png",
     titleText: "They're Everywhere!",
     background: "https://cdn.dribbble.com/userupload/33715631/file/original-07b7d3ab8da508d0294cc65a7c1f09c1.gif",
     left: "50%",
@@ -707,7 +707,7 @@ l2.addEventListener('click', function () {
         interval: 500,
         count: 1,
         countStrategy: "triple",
-        src: "/bacteria1.png",
+        src: "/assests/bacteria1.png",
         titleText: "Ewww...",
         background: "https://substackcdn.com/image/fetch/w_1200,h_600,c_fill,f_jpg,q_auto:good,fl_progressive:steep,g_auto/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F494d241c-1d61-42a5-8551-e689540b8ec4_1000x752.jpeg",
         maxWaves: 4,
@@ -717,7 +717,7 @@ l2.addEventListener('click', function () {
         onComplete: () => {
           spawnMultipleEntities({
             count: 1,
-            src: "/virus2.png",
+            src: "/assests/virus2.png",
             titleText: "They Multiply!",
             background: "https://media-cdn.tripadvisor.com/media/photo-m/1280/19/85/9b/f8/dirty-bathroom-door-handle.jpg",
             speed: 750,
@@ -728,7 +728,7 @@ l2.addEventListener('click', function () {
               interval: 750,
               count: 5,
               countStrategy: "fixed",
-              src: "/virus2.png",
+              src: "/assests/virus2.png",
               titleText: "Doorknobs are Nasty...",
               background: "https://media-cdn.tripadvisor.com/media/photo-m/1280/19/85/9b/f8/dirty-bathroom-door-handle.jpg",
               speed: 750,
@@ -737,7 +737,7 @@ l2.addEventListener('click', function () {
               onComplete: () => {
                 spawnMultipleEntities({
                 count: 1,
-                src: "/strawberry.png",
+                src: "/assests/strawberry.png",
                 titleText: "Yum!",
                 speed: 10000000000000000,
                 background: "https://upload.wikimedia.org/wikipedia/commons/0/03/103_Fragaria_vesca_L.jpg",
@@ -747,7 +747,7 @@ l2.addEventListener('click', function () {
                   setTimeout (() => {
                   spawnMultipleEntities({
                     count: 1,
-                    src: "/strawSlice.png",
+                    src: "/assests/strawSlice.png",
                     titleText: "Oh?",
                     speed: 100000000000000,
                     background: "https://upload.wikimedia.org/wikipedia/commons/0/03/103_Fragaria_vesca_L.jpg",
@@ -758,7 +758,7 @@ l2.addEventListener('click', function () {
                         interval: 850,
                         count: 1,
                         countStrategy: "triple",
-                        src: ["/nematode1.png", "/nematode2.png","/nematode1.png", "/nematode2.png"],
+                        src: ["/assests/nematode1.png", "/assests/nematode2.png","/assests/nematode1.png", "/assests/nematode2.png"],
                         titleText: "Oh!",
                         background: "https://upload.wikimedia.org/wikipedia/commons/0/03/103_Fragaria_vesca_L.jpg",
                         top: "50%",
@@ -771,7 +771,7 @@ l2.addEventListener('click', function () {
                             interval: 2000,
                             count: 5,
                             countStrategy: "fixed",
-                            src: "/armillaria.png",
+                            src: "/assests/armillaria.png",
                             titleText: "Fungal Infestation!",
                             speed: 1000,
                             growRate: 25,
@@ -782,7 +782,7 @@ l2.addEventListener('click', function () {
                             onComplete: () => {
                               spawnMultipleEntities({
                                 count: 5,
-                                src: "/bacteria2.png",
+                                src: "/assests/bacteria2.png",
                                 titleText: "Dirty Dirt",
                                 speed: 850,
                                 growRate: 10,
@@ -794,7 +794,7 @@ l2.addEventListener('click', function () {
                                     interval: 850, 
                                     count: 3,
                                     countStrategy: "exponential",
-                                    src: "/bacteria2.png",
+                                    src: "/assests/bacteria2.png",
                                     titleText: "Infinite bacteria source!",
                                     maxWaves: 4,
                                     background: "https://www.snexplores.org/wp-content/uploads/2019/11/860_main_questions_CJdirt_0.gif",
@@ -804,7 +804,7 @@ l2.addEventListener('click', function () {
                                       spawnBoss({
                                         health: 5,
                                         count: 6,
-                                        src: "/virus1.png",
+                                        src: "/assests/virus1.png",
                                         titleText: "Villanous Viruses!",
                                         growRate: 5,
                                         speed: 800,
@@ -851,7 +851,7 @@ l3.addEventListener('click', function () {
     health: 5,
     count: 3,
     growRate: 5,
-    src: "/fly2.gif",
+    src: "/assests/fly2.gif",
     titleText: "Fruit Flies",
     background: "https://www.webstaurantstore.com/images/expanded-descriptions/7/7/779880/8669bded-db8a-44e5-b07a-79609587181b.jpg",
     left: "50%",
@@ -861,7 +861,7 @@ l3.addEventListener('click', function () {
         interval: 500,
         count: 2,
         countStrategy: "exponential",
-        src: "/fly.png",
+        src: "/assests/fly.png",
         titleText: "Fruit Fly Fiesta!!",
         background: "https://pbs.twimg.com/media/F9u2rVgWUAA87PI.jpg",
         speed: 750,
@@ -872,7 +872,7 @@ l3.addEventListener('click', function () {
         onComplete: () => {
           spawnMultipleEntities({
             count: 10,
-            src: "/Japanese Beetle.png",
+            src: "/assests/Japanese Beetle.png",
             titleText: "悪い甲虫 (Bad Beetle)",
             background: "https://www.epicgardening.com/wp-content/uploads/2024/03/Wild-poppies-Papaver-rhoeas-and-Forking-larkspur-Consolida-regalis-blooming-in-fthe-field-in-sunny-day-.jpg",
             growRate: 20,
@@ -882,7 +882,7 @@ l3.addEventListener('click', function () {
             onComplete: () => {
               spawnMultipleEntities({
                 count: 1,
-                src: "/banana.png",
+                src: "/assests/banana.png",
                 titleText: "Banana?",
                 speed: 10000000000000000,
                 background: "https://extension.msstate.edu/sites/default/files/styles/feature/public/news/2019/sg20190722_thai_black.JPG?itok=3mWEqVqE",
@@ -893,7 +893,7 @@ l3.addEventListener('click', function () {
                     interval: 2000,
                     count: 3,
                     countStrategy: "exponential",
-                    src: "/Banana Weevil Larva.png",
+                    src: "/assests/Banana Weevil Larva.png",
                     titleText: "Banana Weevil Larva",
                     top: ["60%","40%","40%","60%","50%"],
                     left: ["60%","60%","40%","40%","50%"],
@@ -906,7 +906,7 @@ l3.addEventListener('click', function () {
                         interval: 500,
                         count: 10,
                         countStrategy: "fixed",
-                        src: "/Banana Weevil.png",
+                        src: "/assests/Banana Weevil.png",
                         titleText: "Banana Weevil Adult",
                         background: "https://www.agrosavia.co/media/rb5epwkn/erika-vergara-y-huberto-morales-1.jpg",
                         top: "40%",
@@ -919,7 +919,7 @@ l3.addEventListener('click', function () {
                             interval: 500,
                             count: 5,
                             countStrategy: "fixed",
-                            src: "/codling pillar.png",
+                            src: "/assests/codling pillar.png",
                             titleText: "Oh dear cod... \n Codlings!",
                             speed: 750,
                             growRate: 5,
@@ -934,7 +934,7 @@ l3.addEventListener('click', function () {
                                 interval: 850,
                                 count: 5,
                                 countStrategy: "triple",
-                                src: "/codling moth.png",
+                                src: "/assests/codling moth.png",
                                 titleText: "mophs!",
                                 top: ["10%","20%","30%","40%","50%","60%","70%"],
                                 left: ["10%","20%","30%","40%","50%","60%","70%"],
@@ -946,7 +946,7 @@ l3.addEventListener('click', function () {
                                   spawnBoss({
                                     health: 10,
                                     count: 3,
-                                    src: "/borer.png",
+                                    src: "/assests/borer.png",
                                     titleText: "You are boar? \n I am borer!",
                                     background: "https://media.istockphoto.com/id/177021819/photo/peach-orchard.jpg?s=612x612&w=0&k=20&c=2gDtXiT1BG9rYQ9EZovEHKRbeBkfL18n8EeKC79AGGg=",
                                     left: "20%",
@@ -957,7 +957,7 @@ l3.addEventListener('click', function () {
                                       spawnBoss({
                                         health: 30,
                                         count: 1,
-                                        src: "/cocrab2.png",
+                                        src: "/assests/cocrab2.png",
                                         titleText: "Massive Coconut Crab!",
                                         growRate: 10,
                                         speed: 1000,
@@ -968,7 +968,7 @@ l3.addEventListener('click', function () {
                                           spawnBoss({
                                           health: 10,
                                           count: 6,
-                                          src: "/cocrab1.png",
+                                          src: "/assests/cocrab1.png",
                                           titleText: "Dad?",
                                           growRate: 15,
                                           speed: 750,
