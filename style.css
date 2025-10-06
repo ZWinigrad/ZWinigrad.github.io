@@ -1,75 +1,315 @@
-#map {
-      height: 600px;
-    }
+/* CSS is how you can add style to your website, such as colors, fonts, and positioning of your
+   HTML content. To learn how to do something, just try searching Google for questions like
+   "how to change link color." */
 
-.leaflet-tooltip.polygon-label {
-  background-color: transparent;
-  border: none;
-  color: darkblue;
-  font-weight: bold;
+img {
+  image-rendering: auto;
+  transform: translateZ(0);
+  will-change: transform;
+  mix-blend-mode: normal;
+  z-index: 10;
+}
+
+.noselect {
+-webkit-touch-callout: none !important;
+-webkit-user-select: none !important;
+-webkit-user-drag: none !important;
+-khtml-user-select: none !important;
+-moz-user-select: none !important;
+-ms-user-select: none !important;
+user-select: none !important;
+}
+
+
+.body {
+  margin: 0;
+  padding: 0;
+}
+
+.headerBox {
+  background-image: url(https://images.unsplash.com/photo-1572859704906-ab0716da285f?q=80&w=2835&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+  margin: 0;
+  padding: 0;
+  background-size: 50%;
+  height: 200px;
+  color:white;
+}
+
+.heading {
+  color: red;
   text-align: center;
+  font-family: cursive; 
+  position: absolute;
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Webb%27s_First_Deep_Field.jpg/800px-Webb%27s_First_Deep_Field.jpg");
+  border-radius: 20%;
+  border-style: solid;
+  border-color: cyan;
+  border-width: 5px;
+  width: 30%;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.menu {
+  background-color: skyblue;
+  color: white;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  -ms-transform: translate(-50%, -100%);
+  transform: translate(-50%, -100%);
+}
+
+.PageLink {
+  text-decoration: none;
+  color: white;
+  
+}
+
+
+.rightButton{
+  position: absolute;
+  color:white;
+  right: 25%;
+  bottom: 10px;
+  height: 40px;
+  width: auto;
+  background-image: url(https://cdn.pixabay.com/photo/2013/07/13/13/32/demon-161049_1280.png);
+  background-size: 30%;
+  text-align: center;
+  border-color: white;
+  font-size: 20px;
+}
+
+.leftButton{
+  position: absolute;
+  left: 25%;
+  bottom: 10px;
+  height: 40px;
+  width: auto;
+  background-image: url(https://img.freepik.com/premium-vector/entrance-paradise-open-gate-staircase-leading-wrought-iron-gatesbackground_273525-1643.jpg?w=2000);
+  background-size: 30%;
+  text-align: center;
+  color:white;
+  font-size: 20px;
+}
+
+
+.character{
+  height:70%;
+  left: 40%;
+  top: 25%;
+  position: absolute;
+  
+}
+
+
+.box {
+  background-color: #a9ec8d;
+  font-family: Courier;
+  text-align: center;
+  display: block;
+  position: relative;
+  
+}
+
+.flexParent{
+  display:flex
+  
+}
+
+.flexChild{
+  flex:1;
+  background-color: #a9ec8d;
+  font-family: Courier;
+  text-align: center;
+  display: block;
+  position: relative;
+  margin:0;
+}
+
+.intro{
+  color: rebeccapurple;
+  font: oblique;
+  display:float;
+}
+
+.highlight{
+  filter: brightness(200%);
+}
+
+.yagde{
+  background-image: url("/yadgebutton.gif");
+  background-size: cover;
+  width: 88px;
+  height: 31px;
+}
+
+.homeText{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+.bird {
+  text-align: center;
+  width: 50%;
+  height: 50%; 
+  border-radius: 50%;
+  border: dotted;
+  border-color: black;
+}
+
+.space {
+  background-image: url("Great Blue Heron 1.jpg");
+  color: blue;
+  text-align: center;
+  width: 50%;
+}
+
+.button {
+  width: 25%;
+  height: 30%;
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Webb%27s_First_Deep_Field.jpg/800px-Webb%27s_First_Deep_Field.jpg");
+  background-size: contain;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.table {
+ border: 1px solid black; 
+ border-collapse: collapse;
+}
+
+.gamePopup{
+  display: none; 
+  position: fixed; 
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+  padding: 20px; 
+  border: 1px solid black;
+  width:100%;
+  height:100%;
+  text-align:center;
+}
+
+.disBlock{
+  display:block;
+}
+
+.tf{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 20px;
+  text-align: center;
+  z-index:20;
+  padding-top: 20px;
+  padding-right: 5px;
+  padding-bottom: 20px;
+  padding-left: 5px;
+  vertical-align: text-bottom;
+}
+
+.td{
+  position:relative;
+  background-color:azure;
+  border-bottom:solid;
+  vertical-align: middle;
+  text-align: center;
+}
+
+@keyframes wave {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.wave-text {
+  display: inline-block;
+  animation: wave 0.4s ease-in-out 3;
+  animation-delay: var(--delay);
+}
+
+
+/* Optional: Pulse animation */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+}
+
+@keyframes shotEffect {
+  0% {
+    transform: scale(0.2);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+.shot {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: orange;
+  opacity: 1;
+  animation: shotEffect 0.2s forwards ease-out;
   pointer-events: none;
-  transition: font-size 0.1s ease;
+  filter: brightness(200%);
 }
 
-body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      line-height: 1.6;
-    }
-header{
-      padding: 20px;
-      margin: auto;
-      min-height: 450px;
-      background-image: url('blob:https://storymaps.arcgis.com/fcdef095-51bf-4066-a56c-a7628d2f30b5');
-      background-size: cover;
-    }
-section, footer {
-      padding: 20px;
-      margin: auto;
-    }
-nav {
-      background: #333;
-      color: #fff;
-      padding: 10px 20px;
-      text-align: center;
-    }
-nav a {
-      color: white;
-      text-decoration: none;
-      margin: 0 15px;
-    }
-.hero {
-      background: #f4f4f4;
-      text-align: center;
-      padding: 50px 
-      min-height: 450px;
-    }
-.projects {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-    }
-.project-card {
-      border: 1px solid #ccc;
-      padding: 15px;
-      border-radius: 8px;
-    }
-footer {
-      text-align: center;
-      background: #f4f4f4;
-      padding: 20px;
-    }
-.gridimg {
-      max-height:15%;
-      max-width:500px;
+#almanac {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Three equal columns */
+  gap: 100px; /* Space between grid items */
+  box-sizing: border-box;
+  overflow-y: auto;
+  height: 100vh;
+  width:100vw;
+}
+
+.entry {
+  background-image: url('/paper.jpg');
+  background-size: cover;
+  border: thin solid black;
+  background-color: white;
+  height: auto;
+  width:auto;
+  box-sizing: border-box;
+  user-select:none;
+}
+
+.hue{
+  filter: blur(15px);
 }
 
 
-
-
-
-
-
-
+@keyframes scrollBackground {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 1000px 1000px; /* Adjust distance as needed */
+  }
+}
