@@ -290,7 +290,7 @@ user-select: none !important;
 }
 
 .entry {
-  background-image: url('/paper.jpg');
+  background-image: url('/assests/paper.jpg');
   background-size: cover;
   border: thin solid black;
   background-color: white;
