@@ -175,7 +175,7 @@ function createShotEffect(x, y) {
   shot.style.width = "10px";
   shot.style.height = "10px";
   shot.style.borderRadius = "20%";
-  shot.style.backgroundImage = "url('/bullethole.png')";
+  shot.style.backgroundImage = "url('/assests/bullethole.png')";
   shot.style.filter = "brightness(2000%)";
   shot.style.backgroundSize = "cover";
   shot.style.opacity = "1";
