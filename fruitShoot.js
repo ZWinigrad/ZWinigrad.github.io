@@ -205,6 +205,7 @@ document.addEventListener("click", (e) => {
     createShotgunBlastEffect(e.clientX, e.clientY);
   } else {
     const newPew = pew.cloneNode();
+    createShotEffect(e.clientX, e.clientY);
     newPew.volume = pew.volume; // Set volume to cloned instance
     newPew.play();
   }
